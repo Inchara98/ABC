@@ -1,0 +1,12 @@
+openpyxl
+pandas
+numpy
+selenium
+configparser
+pathlib
+pytest
+pytest-html
+Pyselenium
+pytest-logger
+pytest-logging
+pytest-report
