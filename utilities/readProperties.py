@@ -1,12 +1,12 @@
-
+import configparser
 from selenium import webdriver
-
 from get_directory import DirectoryPath
 
 
 class ReadConfig:
     path = DirectoryPath()
-    config = path.get_config_ini()
+    config = configparser.RawConfigParser()
+    config.read("../Configurations/config.ini")
 
     @staticmethod
     def get_chrome_browser():
@@ -18,17 +18,14 @@ class ReadConfig:
         driver = webdriver.Chrome(options=options, executable_path=p.get_driver_path())
         return driver
 
-    @staticmethod
     def getApplicationURL(self):
         url = self.config.get('common info', 'baseURL')
         return url
 
-    @staticmethod
     def getUsername(self):
         username = self.config.get('common info', 'username')
         return username
 
-    @staticmethod
     def getPassword(self):
         password = self.config.get('common info', 'password')
         return password

@@ -11,7 +11,8 @@ class DirectoryPath:
 
     def get_config_ini(self):
         config = configparser.RawConfigParser()
-        config.read(os.path.join(self.cwd, "Configurations/config.ini"))
+        config.read("../Configurations/config.ini")
+        return config
 
     # logic to get report file
     def get_functional_report(self):

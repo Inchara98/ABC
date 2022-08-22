@@ -10,3 +10,4 @@ Pyselenium
 pytest-logger
 pytest-logging
 pytest-report
+requests
