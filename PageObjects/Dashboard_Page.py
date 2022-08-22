@@ -6,5 +6,4 @@ class Dashboard_Objects:
     login_button = ""
     login_logfile = "../Logs/Login.log"
     dashboard_logfile = "../Logs/Dashboard.log"
-    program_logfile = "../Logs/Program.log"
 

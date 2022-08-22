@@ -1,10 +1,9 @@
 import logging
 import time
-from selenium import webdriver
 
 from PageObjects.Dashboard_Page import Dashboard_Objects
-from get_directory import DirectoryPath
-from utilities import dummy, dashboard_logGen, login_logGen, Programs_logGen
+from utilities import Programs_logGen
+from utilities.readProperties import ReadConfig
 
 login = "../Logs/Login.log"
 
@@ -14,8 +13,9 @@ class Test_Atria_Login_Page:
     baseURL = "https://cqube-release.tibilprojects.com/"
     valid_uname = "admin"
     valid_pwd = "Tibil@123"
-    driver = webdriver.Chrome(executable_path='../Driver/chromedriver')
-    logger = Modules_logGen.setup_logger('log_pl', logfile.login_logfile, level=logging.DEBUG)
+    browser = ReadConfig()
+    driver = browser.get_chrome_browser()
+    logger = Programs_logGen.setup_logger('log_pl', logfile.login_logfile, level=logging.DEBUG)
 
     def test_navigation_to_the_application(self):
         self.driver.get(self.baseURL)
