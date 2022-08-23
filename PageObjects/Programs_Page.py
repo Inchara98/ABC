@@ -1,7 +1,8 @@
 
 class Program_Objects:
     # List of Selenium attributes of Program Screen
-    nishitha = ""
+    dashboard = "menu-item-0"
+    nishtha = "menu-item-1"
     total_state = ""
     total_enrollment = ""
     total_completion = ""

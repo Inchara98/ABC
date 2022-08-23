@@ -12,7 +12,7 @@ class ReadConfig:
     def get_chrome_browser():
         p = DirectoryPath()
         options = webdriver.ChromeOptions()
-        options.add_argument('--headless')  # headless enable or disable
+        # options.add_argument('--headless')  # headless enable or disable
         options.add_argument('--no-sandbox')
         options.add_argument('--disable-gpu')
         driver = webdriver.Chrome(options=options, executable_path=p.get_driver_path())
@@ -28,4 +28,16 @@ class ReadConfig:
 
     def getPassword(self):
         password = self.config.get('common info', 'password')
+        return password
+
+    def get_state_ApplicationURL(self):
+        url = self.config.get('common info', 'stateURL')
+        return url
+
+    def get_state_Username(self):
+        username = self.config.get('common info', 'stateUser')
+        return username
+
+    def get_state_Password(self):
+        password = self.config.get('common info', 'statePassword')
         return password

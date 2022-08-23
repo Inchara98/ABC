@@ -1,4 +1,5 @@
 import logging
+import time
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
@@ -8,13 +9,30 @@ from utilities import Programs_logGen
 from utilities.readProperties import ReadConfig
 
 
-class program_nishtha():
+class program_nishtha:
     pageobjects = Program_Objects()
     value = ""
     Tittle = ""
     dirpath = ReadConfig()
     logger = Programs_logGen.setup_logger('log_pl', pageobjects.program_logfile, level=logging.DEBUG)
     driver = dirpath.get_chrome_browser()
+    driver.implicitly_wait(50)
+    driver.maximize_window()
+    driver.get(dirpath.getApplicationURL())
+    time.sleep(5)
+    driver.find_element(By.ID, pageobjects.nishtha).click()
+    time.sleep(3)
+
+    def test_click_the_nishitha_button(self):
+        self.driver.find_element(By.ID, self.pageobjects.dashboard).click()
+        self.driver.find_element(By.ID, self.pageobjects.nishtha).click()
+        time.sleep(3)
+        if 'nishtha' in self.driver.current_url:
+            self.logger.info("********** Nishtha Button is worknig  ************")
+            assert True
+        else:
+            self.logger.error("************* Nishtha Button is not working ****************")
+            assert False
 
     # Program Vanity Cards
     def test_check_whether_total_state_card(self):
@@ -246,7 +264,8 @@ class program_nishtha():
             assert False
         # validate camel cases
         for i in range(len(state_tablevals)):
-            if state_tablevals[i] != state_tablevals[i].lower() and state_tablevals[i] != state_tablevals[i].upper() and "_" not in state_tablevals[i]:
+            if state_tablevals[i] != state_tablevals[i].lower() and state_tablevals[i] != state_tablevals[
+                i].upper() and "_" not in state_tablevals[i]:
                 self.logger.info("*********** State Names are in Camel Cases *************")
                 assert True
             else:

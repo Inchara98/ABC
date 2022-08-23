@@ -9,6 +9,7 @@ location = DirectoryPath()
 
 logfiles = Dashboard_Objects()
 
+
 def setup_logger(logger_name, log_file, level=logging.WARNING):
     # Erase log if already exists
     if exists(log_file):
@@ -27,4 +28,4 @@ def setup_logger(logger_name, log_file, level=logging.WARNING):
 
 
 if __name__ == '__main__':
-    setup_logger('log_pl', logfiles.login_logfile , logging.DEBUG)
+    setup_logger('log_pl', logfiles.login_logfile, logging.DEBUG)
