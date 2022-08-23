@@ -23,7 +23,7 @@ class Program_Objects:
     Font_Increase_Button = ""
     Font_Decrease_Button = ""
     Default_Font_Button = ""
-    program_logfile = "../Logs/Program.log"
+    program_logfile = "../../../Logs/Program.log"
     Program_dropdown = "ng-option-label ng-star-inserted"
 
     # Courses and Medium status

@@ -1,10 +1,10 @@
 import logging
 from os import remove
 from os.path import exists
-
 from PageObjects.Dashboard_Page import Dashboard_Objects
+from PageObjects.Programs_Page import Program_Objects
 
-logfiles = Dashboard_Objects()
+pageobjects = Program_Objects()
 
 
 def setup_logger(logger_name, log_file, level=logging.WARNING):
@@ -25,4 +25,4 @@ def setup_logger(logger_name, log_file, level=logging.WARNING):
 
 
 if __name__ == '__main__':
-    setup_logger('log_pl',logfiles.program_logfile, logging.DEBUG)
+    setup_logger('log_pl',pageobjects.program_logfile, logging.DEBUG)
