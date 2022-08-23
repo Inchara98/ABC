@@ -13,7 +13,6 @@ from utilities.readProperties import ReadConfig
 
 class program_nishtha:
     pageobjects = Program_Objects()
-    value = ""
     Tittle = ""
     data = ReadConfig()
     logger = Programs_logGen.setup_logger('log_pl', pageobjects.program_logfile, level=logging.DEBUG)
@@ -49,7 +48,7 @@ class program_nishtha:
 
     def test_check_whether_total_enrollment_card(self):
         total_enrollment = self.driver.find_element(By.ID, self.pageobjects.total_enrollment).text
-        if total_enrollment == self.value:
+        if total_enrollment > 0 and total_enrollment is not None:
             assert True
             self.logger.info("*********** Total enrollment value is showing ***************")
         else:
@@ -58,7 +57,7 @@ class program_nishtha:
 
     def test_check_whether_total_completion_card(self):
         total_completion = self.driver.find_element(By.ID, self.pageobjects.total_completion).text
-        if total_completion == self.value:
+        if total_completion > 0 and total_completion is not None:
             assert True
             self.logger.info("*********** Total completion value is showing ***************")
         else:
@@ -67,7 +66,7 @@ class program_nishtha:
 
     def test_check_whether_total_certification_card(self):
         total_certification = self.driver.find_element(By.ID, self.pageobjects.total_certification).text
-        if total_certification == self.value:
+        if total_certification > 0 and total_certification is not None:
             assert True
             self.logger.info("*********** Total certification value is showing ***************")
         else:
@@ -76,7 +75,7 @@ class program_nishtha:
 
     def test_check_whether_total_Medium_card(self):
         total_medium = self.driver.find_element(By.ID, self.pageobjects.total_medium).text
-        if total_medium == self.value:
+        if total_medium > 0 and total_medium is not None:
             assert True
             self.logger.info("*********** Total medium value is showing ***************")
         else:
@@ -143,16 +142,32 @@ class program_nishtha:
                 assert False
 
     def test_check_clear_dropdown_button(self):
-        dropdown = Select(self.driver.find_element(By.ID, self.pageobjects.Select_Program_Dropdown))
-        default_option = dropdown.first_selected_option.text()
-        dropdown.select_by_index(2)
-        self.driver.find_element(By.XPATH, self.pageobjects.Clear_Button).click()
-        if default_option in self.driver.page_source:
+        self.driver.find_element(By.ID, self.pageobjects.Implementation_Status).click()
+        program_options = Select(self.driver.find_element(By.XPATH, self.pageobjects.Program_dropdown))
+        count = len(program_options.options)
+        if count != 0:
+            self.logger.info("********** Program dropdown having options **************")
             assert True
-            self.logger.info("*********** Program is Selected ***************")
         else:
-            self.logger.error("***************  Program is not selected ************")
+            self.logger.error("************* Program dropdown not having options ***************")
             assert False
+
+    def test_Implementation_status_select_each_options_from_dropdown(self):
+        self.driver.find_element(By.ID, self.pageobjects.Implementation_Status).click()
+        program_options = Select(self.driver.find_element(By.ID, self.pageobjects.Program_dropdown))
+        count = len(program_options.options)
+        for i in range(count):
+            program_options.select_by_index(i)
+            program_name = program_options.options[i].text
+            self.logger(program_options.options[i].text, " is selected ...")
+            if program_name == program_options.first_selected_option.text:
+                assert True
+                self.logger.info("********* Program is selected *************")
+            else:
+                self.logger.error(program_name, program_options.first_selected_option.text,
+                                  "******** is not selected ... *********")
+                assert False
+
 
     def test_check_FullScreen_button(self):
         a = self.driver.get_window_size()
@@ -175,16 +190,34 @@ class program_nishtha:
         zoomout.click()
 
     def test_fontsize_increase_button(self):
-        Font_increase_button = self.driver.find_element((By.ID, self.pageobjects.Font_Increase_Button))
-        Font_increase_button.click()
+        self.driver.find_element(By.ID, self.pageobjects.Implementation_Status).click()
+        a_plus = self.resue.test_click_on_A_plus_button()
+        if a_plus != 0:
+            self.logger.info("********** A+ button is working as expected ******************")
+            assert True
+        else:
+            self.logger.error("************** A+ button is not working as expected ****************")
+            assert False
 
     def test_fontsize_decrease_button(self):
-        Font_decrease_button = self.driver.find_element((By.ID, self.pageobjects.Font_Decrease_Button))
-        Font_decrease_button.click()
+        self.driver.find_element(By.ID, self.pageobjects.Implementation_Status).click()
+        a_plus = self.resue.test_click_on_A_plus_button()
+        if a_plus != 0:
+            self.logger.info("********** A- button is working as expected ******************")
+            assert True
+        else:
+            self.logger.error("************** A- button is not working as expected ****************")
+            assert False
 
     def test_Default_Font_button(self):
-        Default_Fontsize_Button = self.driver.find_element((By.ID, self.pageobjects.Default_Font_Button))
-        Default_Fontsize_Button.click()
+        self.driver.find_element(By.ID, self.pageobjects.Implementation_Status).click()
+        a_plus = self.resue.test_click_on_A_default_button()
+        if a_plus != 0:
+            self.logger.info("********** A button is working as expected ******************")
+            assert True
+        else:
+            self.logger.error("************** A  button is not working as expected ****************")
+            assert False
 
 
 
@@ -379,5 +412,87 @@ class program_nishtha:
             assert True
         else:
             self.logger.error("************** A  button is not working as expected ****************")
+            assert False
+
+    # % against potential base
+    def test_click_on_per_against_Potential_base(self):
+        self.driver.find_element(By.ID, self.pageobjects.PAP_Base).click()
+        result = self.driver.find_element(By.ID, self.pageobjects.CM_status).get_attribute('aria-selected')
+        if str(True) == result:
+            assert True
+            self.logger.info("***************** Clicked the % against potential base Tab **********************")
+        else:
+            self.logger.error("***************** % against potential base Tab is not clicked **********************")
+            assert False
+
+
+    def test_PAP_Base_dropdown_option(self):
+        self.driver.find_element(By.ID, self.pageobjects.Implementation_Status).click()
+        program_options = Select(self.driver.find_element(By.ID, self.pageobjects.Program_dropdown))
+        count = len(program_options.options)
+        if count != 0:
+            self.logger.info("********** Program dropdown having options **************")
+            assert True
+        else:
+            self.logger.error("************* Program dropdown not having options ***************")
+            assert False
+
+    def test_PAP_base_select_each_options_from_dropdown(self):
+        self.driver.find_element(By.ID, self.pageobjects.PAP_Base).click()
+        program_options = Select(self.driver.find_element(By.ID, self.pageobjects.Program_dropdown))
+        count = len(program_options.options)
+        for i in range(count):
+            program_options.select_by_index(i)
+            program_name = program_options.options[i].text
+            self.logger(program_options.options[i].text, " is selected ...")
+            if program_name == program_options.first_selected_option.text:
+                assert True
+                self.logger.info("********* Program is selected *************")
+            else:
+                self.logger.error(program_name, program_options.first_selected_option.text,
+                                  "******** is not selected ... *********")
+                assert False
+
+    def test_a_plus_button_on_PAP_Base(self):
+        self.driver.find_element(By.ID, self.pageobjects.PAP_Base).click()
+        a_plus = self.resue.test_click_on_A_plus_button()
+        if a_plus != 0:
+            self.logger.info("********** A+ button is working as expected ******************")
+            assert True
+        else:
+            self.logger.error("************** A+ button is not working as expected ****************")
+            assert False
+
+    def test_a_minus_button_on_PAP_Base(self):
+        self.driver.find_element(By.ID, self.pageobjects.PAP_Base).click()
+        a_plus = self.resue.test_click_on_A_plus_button()
+        if a_plus != 0:
+            self.logger.info("********** A- button is working as expected ******************")
+            assert True
+        else:
+            self.logger.error("************** A- button is not working as expected ****************")
+            assert False
+
+    def test_a_default_button_on_PAP_Base(self):
+        self.driver.find_element(By.ID, self.pageobjects.PAP_Base).click()
+        a_plus = self.resue.test_click_on_A_default_button()
+        if a_plus != 0:
+            self.logger.info("********** A button is working as expected ******************")
+            assert True
+        else:
+            self.logger.error("************** A  button is not working as expected ****************")
+            assert False
+
+    def test_clear_dropdown_button_PAP(self):
+        self.driver.find_element(By.ID, self.pageobjects.PAP_Base).click()
+        dropdown = Select(self.driver.find_element(By.XPATH, self.pageobjects.Select_Program_Dropdown))
+        default_option = dropdown.first_selected_option.text()
+        dropdown.select_by_index(2)
+        self.driver.find_element(By.XPATH, self.pageobjects.Clear_Button).click()
+        if default_option in self.driver.page_source:
+            assert True
+            self.logger.info("*********** Program is Selected ***************")
+        else:
+            self.logger.error("***************  Program is not selected ************")
             assert False
 

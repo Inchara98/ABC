@@ -17,9 +17,16 @@ class Program_Objects:
     total_certification_Tittle = ""
     total_medium_Tittle = ""
     Select_Program_Dropdown = ""
-    Clear_Button = ""
+    Clear_Button = "//*[@id='filter-Program']/div/span[1]"
     program_logfile = "../../../Logs/Program.log"
     Program_dropdown = "ng-option-label ng-star-inserted"
+
+    # Implementation Status
+    Implementation_Status = "mat-tab-label-2-0"
+    FullScreen = ""
+    Zoomin = ""
+    Zoomout = ""
+
 
     # Courses and Medium status
     state_colmn = "//*[@role='row']/td[1]"
@@ -42,3 +49,5 @@ class Program_Objects:
     course_values = "//td[2]"
     medium_values = "//td[3]"
 
+    # % against potential base
+    PAP_Base = "mat-tab-label-2-3"
