@@ -168,7 +168,6 @@ class program_nishtha:
                                   "******** is not selected ... *********")
                 assert False
 
-
     def test_check_FullScreen_button(self):
         a = self.driver.get_window_size()
         fullscreen = self.driver.find_element(By.ID, self.pageobjects.FullScreen)
@@ -218,8 +217,6 @@ class program_nishtha:
         else:
             self.logger.error("************** A  button is not working as expected ****************")
             assert False
-
-
 
     # Course and Medium status
     def test_click_on_course_and_medium_tab(self):
@@ -425,7 +422,6 @@ class program_nishtha:
             self.logger.error("***************** % against potential base Tab is not clicked **********************")
             assert False
 
-
     def test_PAP_Base_dropdown_option(self):
         self.driver.find_element(By.ID, self.pageobjects.Implementation_Status).click()
         program_options = Select(self.driver.find_element(By.ID, self.pageobjects.Program_dropdown))
@@ -495,4 +491,3 @@ class program_nishtha:
         else:
             self.logger.error("***************  Program is not selected ************")
             assert False
-

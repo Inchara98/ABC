@@ -64,3 +64,5 @@ class re_call_func:
             self.logger.error("************** A- button is not clicked *******************")
             count = count + 1
         return count
+
+    # def test_zoom_in_functionality(self):

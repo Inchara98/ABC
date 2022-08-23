@@ -28,4 +28,4 @@ def setup_logger(logger_name, log_file, level=logging.WARNING):
 
 
 if __name__ == '__main__':
-    setup_logger('log_pl', logfiles.login_logfile, logging.DEBUG)
+    setup_logger('log_pl',"../Logs/login.log", logging.DEBUG)

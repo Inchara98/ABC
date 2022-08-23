@@ -3,22 +3,23 @@ import logging
 from selenium.webdriver.common.by import By
 
 from PageObjects.Dashboard_Page import Dashboard_Objects
-from utilities import Programs_logGen
+from utilities import login_logGen
 from utilities.readProperties import ReadConfig
 
 
-class login():
+class Login:
     pageobjects = Dashboard_Objects()
     dirpath = ReadConfig()
-    logger = Programs_logGen.setup_logger('log_pl', pageobjects.login_logfile, level=logging.DEBUG)
+    logger = login_logGen.setup_logger('log_pl', "../../../Logs/login.log", level=logging.DEBUG)
     driver = dirpath.get_chrome_browser()
+    driver.implicitly_wait(30)
+    driver.maximize_window()
+    driver.get(dirpath.get_state_ApplicationURL())
 
     def test_check_whether_login_page_displayed(self):
-        self.driver.get(self.dirpath.get_state_ApplicationURL())
         if "login" in self.driver.current_url:
             assert True
             self.logger.info("*********** NVSK Login screen is displayed ************** ")
-
         else:
             self.logger.error("************* NVSK Login page is not displayed **************")
             assert False
