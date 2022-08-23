@@ -143,7 +143,7 @@ class program_nishtha:
         dropdown = Select(self.driver.find_element(By.ID, self.pageobjects.Select_Program_Dropdown))
         default_option = dropdown.first_selected_option.text()
         dropdown.select_by_index(2)
-        self.driver.find_element(By.ID, self.pageobjects.Clear_Button).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Clear_Button).click()
         if default_option in self.driver.page_source:
             assert True
             self.logger.info("*********** Program is Selected ***************")

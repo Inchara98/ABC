@@ -15,8 +15,8 @@ class Program_Objects:
     total_medium_Tittle = ""
 
     #Implementation status
-    Select_Program_Dropdown = ""
-    Clear_Button = ""
+    Select_Program_Dropdown = "filter-Program"
+    Clear_Button = "//*[@id='filter-Program']/div/span[1]"
     FullScreen = ""
     Zoomin = ""
     Zoomout = ""
