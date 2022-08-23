@@ -151,6 +151,40 @@ class program_nishtha:
             self.logger.error("***************  Program is not selected ************")
             assert False
 
+    def test_check_FullScreen_button(self):
+        a = self.driver.get_window_size()
+        fullscreen = self.driver.find_element(By.ID, self.pageobjects.FullScreen)
+        fullscreen.click()
+        b = self.driver.get_window_size()
+        if a != b:
+            assert True
+            self.logger.info("*********** Program is Selected ***************")
+        else:
+            self.logger.error("***************  Program is not selected ************")
+            assert False
+
+    def test_zoomin_button(self):
+        zoomin = self.driver.find_element((By.ID, self.pageobjects.Zoomin))
+        zoomin.click()
+
+    def test_zoomout_button(self):
+        zoomout = self.driver.find_element(By.ID, self.pageobjects.Zoomout)
+        zoomout.click()
+
+    def test_fontsize_increase_button(self):
+        Font_increase_button = self.driver.find_element((By.ID, self.pageobjects.Font_Increase_Button))
+        Font_increase_button.click()
+
+    def test_fontsize_decrease_button(self):
+        Font_decrease_button = self.driver.find_element((By.ID, self.pageobjects.Font_Decrease_Button))
+        Font_decrease_button.click()
+
+    def test_Default_Font_button(self):
+        Default_Fontsize_Button = self.driver.find_element((By.ID, self.pageobjects.Default_Font_Button))
+        Default_Fontsize_Button.click()
+
+
+
     # Course and Medium status
     def test_click_on_course_and_medium_tab(self):
         self.driver.find_element(By.ID, self.pageobjects.CM_status).click()

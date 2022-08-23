@@ -13,8 +13,16 @@ class Program_Objects:
     total_completion_Tittle = ""
     total_certification_Tittle = ""
     total_medium_Tittle = ""
+
+    #Implementation status
     Select_Program_Dropdown = ""
     Clear_Button = ""
+    FullScreen = ""
+    Zoomin = ""
+    Zoomout = ""
+    Font_Increase_Button = ""
+    Font_Decrease_Button = ""
+    Default_Font_Button = ""
     program_logfile = "../Logs/Program.log"
     Program_dropdown = "ng-option-label ng-star-inserted"
 
