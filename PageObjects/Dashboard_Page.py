@@ -8,5 +8,6 @@ class Dashboard_Objects:
     user_name_field = ""
     password_filed = ""
     login_button = ""
-    login_logfile = "../Logs/Login.log"
-    dashboard_logfile = "../Logs/Dashboard.log"
+    login_logfile = "../../../`Logs/Login.log"
+    dashboard_logfile = "../../../Logs/Dashboard.log"
+

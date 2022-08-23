@@ -1,9 +1,6 @@
-import configparser
-import logging
 import time
 
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.select import Select
 
 from PageObjects.Dashboard_Page import Dashboard_Objects
 from utilities.readProperties import ReadConfig
@@ -20,10 +17,28 @@ time.sleep(5)
 driver.find_element(By.ID, "menu-item-1").click()
 time.sleep(3)
 
-drop = driver.find_element(By.XPATH, "//*[@id='filter-Program']/div/span[2]")
-drop.click()
+a = driver.find_element(By.ID, "font-size-reset")
+print(a.value_of_css_property('font-size'))
+a.click()
+if 'style="font-size: 16px;"' in driver.page_source:
+    print("A button is clicked ")
+    assert True
+else:
+    assert False
 
-time.sleep(3)
+a_plus = driver.find_element(By.ID, "font-size-increase")
+a_plus.click()
+if 'style="font-size: 18px;"' in driver.page_source:
+    print("A+ button is clicked ")
+    assert True
+else:
+    assert False
+a_minus = driver.find_element(By.ID, "font-size-decrease")
+a_minus.click()
+if 'style="font-size: 16px;"' in driver.page_source:
+    print("A- button is clicked ")
+    assert True
+else:
+    assert False
 
-driver.find_element(By.ID,"ae8a8c87ace0-1").click()
-time.sleep(5)
+

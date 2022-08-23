@@ -29,3 +29,38 @@ class re_call_func:
             else:
                 self.logger.error("***************  Program is not selecting ************")
                 assert False
+
+    def test_click_on_A_default_button(self):
+        count = 0
+        a_plus = self.driver.find_element(By.ID, self.pageobjects.a_default)
+        a_plus.click()
+        if 'style="font-size: 16px;"' in self.driver.page_source:
+            self.logger.info("************* A button is clicked *************")
+            assert True
+        else:
+            self.logger.error("************** A button is not clicked *******************")
+            count = count + 1
+        return count
+
+    def test_click_on_A_plus_button(self):
+        count = 0
+        a_plus = self.driver.find_element(By.ID, self.pageobjects.a_plus)
+        a_plus.click()
+        if 'style="font-size: 18px;"' in self.driver.page_source:
+            self.logger.info("************* A+ button is clicked *************")
+            assert True
+        else:
+            self.logger.error("************** A+ button is not clicked *******************")
+            count = count + 1
+        return count
+
+    def test_click_on_A_minus_button(self):
+        count = 0
+        a_plus = self.driver.find_element(By.ID, self.pageobjects.a_minus)
+        a_plus.click()
+        if 'style="font-size: 16px;"' in self.driver.page_source:
+            self.logger.info("************* A- button is clicked *************")
+        else:
+            self.logger.error("************** A- button is not clicked *******************")
+            count = count + 1
+        return count

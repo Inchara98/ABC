@@ -1,4 +1,6 @@
 import configparser
+import os
+
 from selenium import webdriver
 from get_directory import DirectoryPath
 
@@ -6,7 +8,7 @@ from get_directory import DirectoryPath
 class ReadConfig:
     path = DirectoryPath()
     config = configparser.RawConfigParser()
-    config.read("../Configurations/config.ini")
+    data = config.read(os.path.join('../../../Configurations/config.ini'))
 
     @staticmethod
     def get_chrome_browser():

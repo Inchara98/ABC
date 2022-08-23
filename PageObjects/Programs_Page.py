@@ -3,6 +3,9 @@ class Program_Objects:
     # List of Selenium attributes of Program Screen
     dashboard = "menu-item-0"
     nishtha = "menu-item-1"
+    a_plus = "font-size-increase"
+    a_minus = "font-size-decrease"
+    a_default = "font-size-reset"
     total_state = ""
     total_enrollment = ""
     total_completion = ""
@@ -13,16 +16,8 @@ class Program_Objects:
     total_completion_Tittle = ""
     total_certification_Tittle = ""
     total_medium_Tittle = ""
-
-    #Implementation status
-    Select_Program_Dropdown = "filter-Program"
-    Clear_Button = "//*[@id='filter-Program']/div/span[1]"
-    FullScreen = ""
-    Zoomin = ""
-    Zoomout = ""
-    Font_Increase_Button = ""
-    Font_Decrease_Button = ""
-    Default_Font_Button = ""
+    Select_Program_Dropdown = ""
+    Clear_Button = ""
     program_logfile = "../../../Logs/Program.log"
     Program_dropdown = "ng-option-label ng-star-inserted"
 

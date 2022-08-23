@@ -1,10 +1,12 @@
 import logging
+import os
 import time
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 
 from PageObjects.Programs_Page import Program_Objects
+from reusable_func import re_call_func
 from utilities import Programs_logGen
 from utilities.readProperties import ReadConfig
 
@@ -13,12 +15,13 @@ class program_nishtha:
     pageobjects = Program_Objects()
     value = ""
     Tittle = ""
-    dirpath = ReadConfig()
+    data = ReadConfig()
     logger = Programs_logGen.setup_logger('log_pl', pageobjects.program_logfile, level=logging.DEBUG)
-    driver = dirpath.get_chrome_browser()
+    driver = data.get_chrome_browser()
+    resue = re_call_func(driver)
     driver.implicitly_wait(50)
     driver.maximize_window()
-    driver.get(dirpath.getApplicationURL())
+    driver.get(data.getApplicationURL())
     time.sleep(5)
     driver.find_element(By.ID, pageobjects.nishtha).click()
     time.sleep(3)
@@ -347,3 +350,34 @@ class program_nishtha:
             else:
                 self.logger.error("*********** Course Values are Not Integers *************")
                 assert False
+
+    def test_a_plus_button_on_cm_status(self):
+        self.driver.find_element(By.ID, self.pageobjects.CM_status).click()
+        a_plus = self.resue.test_click_on_A_plus_button()
+        if a_plus != 0:
+            self.logger.info("********** A+ button is working as expected ******************")
+            assert True
+        else:
+            self.logger.error("************** A+ button is not working as expected ****************")
+            assert False
+
+    def test_a_minus_button_on_cm_status(self):
+        self.driver.find_element(By.ID, self.pageobjects.CM_status).click()
+        a_plus = self.resue.test_click_on_A_plus_button()
+        if a_plus != 0:
+            self.logger.info("********** A- button is working as expected ******************")
+            assert True
+        else:
+            self.logger.error("************** A- button is not working as expected ****************")
+            assert False
+
+    def test_a_default_button_on_cm_status(self):
+        self.driver.find_element(By.ID, self.pageobjects.CM_status).click()
+        a_plus = self.resue.test_click_on_A_default_button()
+        if a_plus != 0:
+            self.logger.info("********** A button is working as expected ******************")
+            assert True
+        else:
+            self.logger.error("************** A  button is not working as expected ****************")
+            assert False
+
