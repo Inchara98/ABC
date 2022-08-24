@@ -25,7 +25,7 @@ class program_nishtha:
     driver.find_element(By.ID, pageobjects.nishtha).click()
     time.sleep(3)
 
-    def test_click_the_nishitha_button(self):
+    def test_click_the_nishtha_button(self):
         self.driver.find_element(By.ID, self.pageobjects.dashboard).click()
         self.driver.find_element(By.ID, self.pageobjects.nishtha).click()
         time.sleep(3)
@@ -39,6 +39,7 @@ class program_nishtha:
     # Program Vanity Cards
     def test_check_whether_total_state_card(self):
         total_state = self.driver.find_element(By.ID, self.pageobjects.total_state).text
+        print(total_state)
         if total_state > 0 and total_state is not None:
             assert True
             self.logger.info("*********** Total state value is showing ***************")
@@ -46,7 +47,7 @@ class program_nishtha:
             self.logger.error("***************  Total state value is not matching ************")
             assert False
 
-    def test_check_whether_total_enrollment_card(self):
+    def test_check_whether_total_enrolment_card(self):
         total_enrollment = self.driver.find_element(By.ID, self.pageobjects.total_enrollment).text
         if total_enrollment > 0 and total_enrollment is not None:
             assert True
@@ -91,13 +92,13 @@ class program_nishtha:
             self.logger.error("***************  Total state Tittle is not matching ************")
             assert False
 
-    def test_check_whether_total_enrollment_Tittle(self):
-        total_enrollment_Tittle = self.driver.find_element(By.ID, self.pageobjects.total_enrollment_Tittle).text
-        if total_enrollment_Tittle == self.Tittle:
+    def test_check_whether_total_enrolment_Tittle(self):
+        total_enrolment_Tittle = self.driver.find_element(By.ID, self.pageobjects.total_enrollment_Tittle).text
+        if total_enrolment_Tittle == self.Tittle:
             assert True
-            self.logger.info("*********** Total enrollment Tittle is showing ***************")
+            self.logger.info("*********** Total enrolment Tittle is showing ***************")
         else:
-            self.logger.error("***************  Total enrollment Tittle is not matching ************")
+            self.logger.error("***************  Total enrolment Tittle is not matching ************")
             assert False
 
     def test_check_whether_total_completion_Tittle(self):

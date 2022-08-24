@@ -6,8 +6,8 @@ class DirectoryPath:
     cwd = os.path.dirname(__file__)
 
     def get_driver_path(self):
-        download_path = os.path.join(self.cwd, 'Driver/chromedriver')
-        return download_path
+        driver_path = os.path.join(self.cwd, 'Driver/chromedriver')
+        return driver_path
 
     def get_config_ini(self):
         config = configparser.RawConfigParser()
