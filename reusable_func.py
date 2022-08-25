@@ -1,8 +1,5 @@
 import time
-
-from selenium.webdriver.support.select import Select
 import logging
-
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 
@@ -11,14 +8,12 @@ from utilities import Programs_logGen
 from utilities.readProperties import ReadConfig
 
 
-class re_call_func:
+class reusableFuncs:
     pageobjects = Program_Objects()
-    dirpath = ReadConfig
+    dirpath = ReadConfig()
     logger = Programs_logGen.setup_logger('log_pl', pageobjects.program_logfile, level=logging.DEBUG)
 
-    def __init__(self, driver):
-        self.driver = driver
-
+    @staticmethod
     def test_check_programs_dropdown(self):
         dropdown = Select(self.driver.find_element(By.ID, self.pageobjects.Select_Program_Dropdown))
         j = 1
@@ -32,6 +27,7 @@ class re_call_func:
                 self.logger.error("***************  Program is not selecting ************")
                 assert False
 
+    @staticmethod
     def test_click_on_A_default_button(self):
         count = 0
         a_plus = self.driver.find_element(By.ID, self.pageobjects.a_default)
@@ -45,6 +41,7 @@ class re_call_func:
             count = count + 1
         return count
 
+    @staticmethod
     def test_click_on_A_plus_button(self):
         count = 0
         a_plus = self.driver.find_element(By.ID, self.pageobjects.a_plus)
@@ -58,6 +55,7 @@ class re_call_func:
             count = count + 1
         return count
 
+    @staticmethod
     def test_click_on_A_minus_button(self):
         count = 0
         a_plus = self.driver.find_element(By.ID, self.pageobjects.a_minus)
@@ -70,6 +68,4 @@ class re_call_func:
             self.logger.error("************** A- button is not clicked *******************")
             count = count + 1
         return count
-
-    # def test_zoom_in_functionality(self):
 

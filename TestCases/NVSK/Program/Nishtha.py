@@ -6,9 +6,11 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 
 from PageObjects.Programs_Page import Program_Objects
-from reusable_func import re_call_func
+from reusable_func import reusableFuncs
 from utilities import Programs_logGen
 from utilities.readProperties import ReadConfig
+
+
 
 
 class program_nishtha:
@@ -17,7 +19,7 @@ class program_nishtha:
     data = ReadConfig()
     logger = Programs_logGen.setup_logger('log_pl', pageobjects.program_logfile, level=logging.DEBUG)
     driver = data.get_chrome_browser()
-    resue = re_call_func(driver)
+    resue = reusableFuncs()
     driver.implicitly_wait(50)
     driver.maximize_window()
     driver.get(data.getApplicationURL())
@@ -130,8 +132,9 @@ class program_nishtha:
 
     # Implementation stages related scripts
     def test_check_programs_dropdown(self):
+        self.driver.find_element(By.ID, self.pageobjects.Implementation_Status).click()
+        time.sleep(2)
         dropdown = Select(self.driver.find_element(By.ID, self.pageobjects.Select_Program_Dropdown))
-        j = 1
         for i in range(1, len(dropdown.options)):
             dropdown.select_by_index(i)
             print(dropdown.options[i].text, 'Program is selected ')
@@ -144,6 +147,7 @@ class program_nishtha:
 
     def test_check_clear_dropdown_button(self):
         self.driver.find_element(By.ID, self.pageobjects.Implementation_Status).click()
+        time.sleep(2)
         program_options = Select(self.driver.find_element(By.XPATH, self.pageobjects.Program_dropdown))
         count = len(program_options.options)
         if count != 0:
@@ -155,6 +159,7 @@ class program_nishtha:
 
     def test_Implementation_status_select_each_options_from_dropdown(self):
         self.driver.find_element(By.ID, self.pageobjects.Implementation_Status).click()
+        time.sleep(2)
         program_options = Select(self.driver.find_element(By.ID, self.pageobjects.Program_dropdown))
         count = len(program_options.options)
         for i in range(count):
@@ -178,7 +183,7 @@ class program_nishtha:
             assert True
             self.logger.info("*********** Program is Selected ***************")
         else:
-            self.logger.error("***************  Program is not selected ************")
+            self.logger.error("*************** Program is not selected ************")
             assert False
 
     def test_zoomin_button(self):
