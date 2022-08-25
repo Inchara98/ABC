@@ -16,7 +16,6 @@ class Test_Nishtha_Dashboard:
     # Program Vanity Cards
     def test_check_whether_total_state_card(self):
         total_state = self.driver.find_element(By.XPATH, self.pageobjects.total_state).text
-        print(total_state)
         if int(total_state) > 0 and total_state is not None:
             self.logger.info("*********** Total state value is showing ***************")
             assert True
@@ -173,7 +172,7 @@ class Test_Nishtha_Dashboard:
             assert False
 
     def test_select_First_option_of_program_dropdown(self):
-        # self.driver.find_element(By.ID, self.pageobjects.Implementation_Status).click()
+        self.driver.find_element(By.ID, self.pageobjects.Implementation_Status).click()
         time.sleep(2)
         result = self.data.test_check_selection_nishtha_1_options(self, driver=self.driver)
         print(result)
@@ -181,6 +180,41 @@ class Test_Nishtha_Dashboard:
             pass
         else:
             self.logger.error("*********** NISHTHA 1.0 Option is not Selected **********")
+            assert False
+    def test_Implementation_Status_a_plus_button_on_cm_status(self):
+        self.driver.find_element(By.ID, self.pageobjects.Implementation_Status).click()
+        time.sleep(2)
+        a_plus = self.data.test_click_on_A_plus_button(self.driver)
+        if a_plus == 0:
+            self.logger.info("********** A+ button is working as expected ******************")
+            self.driver.refresh()
+            assert True
+        else:
+            self.logger.error("************** A+ button is not working as expected ****************")
+            assert False
+
+    def test_Implementation_Status_a_minus_button_on_cm_status(self):
+        self.driver.find_element(By.ID, self.pageobjects.Implementation_Status).click()
+        time.sleep(2)
+        a_minus = self.data.test_click_on_A_minus_button(self.driver)
+        if a_minus == 0:
+            self.logger.info("********** A- button is working as expected ******************")
+            self.driver.refresh()
+            assert True
+        else:
+            self.logger.error("************** A- button is not working as expected ****************")
+            assert False
+
+    def test_Implementation_Status_a_default_button_on_cm_status(self):
+        self.driver.find_element(By.ID, self.pageobjects.Implementation_Status).click()
+        time.sleep(2)
+        a_plus = self.data.test_click_on_A_default_button(self.driver)
+        if a_plus == 0:
+            self.logger.info("********** A button is working as expected ******************")
+            self.driver.refresh()
+            assert True
+        else:
+            self.logger.error("************** A  button is not working as expected ****************")
             assert False
 
     #   Courses and Medium status Tab
@@ -531,7 +565,7 @@ class Test_Nishtha_Dashboard:
             assert False
 
     def test_potential_select_First_option_of_program_dropdown(self):
-        # self.driver.find_element(By.ID, self.pageobjects.Implementation_Status).click()
+        self.driver.find_element(By.ID, self.pageobjects.Potential_Base).click()
         time.sleep(2)
         result = self.data.test_check_selection_nishtha_1_options(self, driver=self.driver)
         print(result)
@@ -539,6 +573,42 @@ class Test_Nishtha_Dashboard:
             pass
         else:
             self.logger.error("*********** NISHTHA 1.0 Option is not Selected **********")
+            assert False
+
+    def test_Potential_Base_a_plus_button_on_cm_status(self):
+        self.driver.find_element(By.ID, self.pageobjects.Potential_Base).click()
+        time.sleep(2)
+        a_plus = self.data.test_click_on_A_plus_button(self.driver)
+        if a_plus == 0:
+            self.logger.info("********** A+ button is working as expected ******************")
+            self.driver.refresh()
+            assert True
+        else:
+            self.logger.error("************** A+ button is not working as expected ****************")
+            assert False
+
+    def test_Potential_Base_a_minus_button_on_cm_status(self):
+        self.driver.find_element(By.ID, self.pageobjects.Potential_Base).click()
+        time.sleep(2)
+        a_minus = self.data.test_click_on_A_minus_button(self.driver)
+        if a_minus == 0:
+            self.logger.info("********** A- button is working as expected ******************")
+            self.driver.refresh()
+            assert True
+        else:
+            self.logger.error("************** A- button is not working as expected ****************")
+            assert False
+
+    def test_Potential_Base_a_default_button_on_cm_status(self):
+        self.driver.find_element(By.ID, self.pageobjects.Potential_Base).click()
+        time.sleep(2)
+        a_plus = self.data.test_click_on_A_default_button(self.driver)
+        if a_plus == 0:
+            self.logger.info("********** A button is working as expected ******************")
+            self.driver.refresh()
+            assert True
+        else:
+            self.logger.error("************** A  button is not working as expected ****************")
             assert False
 
     #   District Wise Status Tab
@@ -657,6 +727,42 @@ class Test_Nishtha_Dashboard:
             self.logger.error("*********** State Names are not selected from Dropdown **********")
             assert False
 
+    def test_District_Status_a_plus_button_on_cm_status(self):
+        self.driver.find_element(By.ID, self.pageobjects.District_Status).click()
+        time.sleep(2)
+        a_plus = self.data.test_click_on_A_plus_button(self.driver)
+        if a_plus == 0:
+            self.logger.info("********** A+ button is working as expected ******************")
+            self.driver.refresh()
+            assert True
+        else:
+            self.logger.error("************** A+ button is not working as expected ****************")
+            assert False
+
+    def test_District_Status_a_minus_button_on_cm_status(self):
+        self.driver.find_element(By.ID, self.pageobjects.District_Status).click()
+        time.sleep(2)
+        a_minus = self.data.test_click_on_A_minus_button(self.driver)
+        if a_minus == 0:
+            self.logger.info("********** A- button is working as expected ******************")
+            self.driver.refresh()
+            assert True
+        else:
+            self.logger.error("************** A- button is not working as expected ****************")
+            assert False
+
+    def test_District_Status_a_default_button_on_cm_status(self):
+        self.driver.find_element(By.ID, self.pageobjects.District_Status).click()
+        time.sleep(2)
+        a_plus = self.data.test_click_on_A_default_button(self.driver)
+        if a_plus == 0:
+            self.logger.info("********** A button is working as expected ******************")
+            self.driver.refresh()
+            assert True
+        else:
+            self.logger.error("************** A  button is not working as expected ****************")
+            assert False
+
     # Course Wise Status
     def test_click_on_the_course_wise_tab_button(self):
         self.driver.find_element(By.ID, self.pageobjects.Course_Status).click()
@@ -761,4 +867,39 @@ class Test_Nishtha_Dashboard:
             pass
         else:
             self.logger.error("*********** State Names are not selected from Dropdown **********")
+            assert False
+    def test_Course_Status_a_plus_button_on_cm_status(self):
+        self.driver.find_element(By.ID, self.pageobjects.Course_Status).click()
+        time.sleep(2)
+        a_plus = self.data.test_click_on_A_plus_button(self.driver)
+        if a_plus == 0:
+            self.logger.info("********** A+ button is working as expected ******************")
+            self.driver.refresh()
+            assert True
+        else:
+            self.logger.error("************** A+ button is not working as expected ****************")
+            assert False
+
+    def test_Course_Status_a_minus_button_on_cm_status(self):
+        self.driver.find_element(By.ID, self.pageobjects.Course_Status).click()
+        time.sleep(2)
+        a_minus = self.data.test_click_on_A_minus_button(self.driver)
+        if a_minus == 0:
+            self.logger.info("********** A- button is working as expected ******************")
+            self.driver.refresh()
+            assert True
+        else:
+            self.logger.error("************** A- button is not working as expected ****************")
+            assert False
+
+    def test_Course_Status_a_default_button_on_cm_status(self):
+        self.driver.find_element(By.ID, self.pageobjects.Course_Status).click()
+        time.sleep(2)
+        a_plus = self.data.test_click_on_A_default_button(self.driver)
+        if a_plus == 0:
+            self.logger.info("********** A button is working as expected ******************")
+            self.driver.refresh()
+            assert True
+        else:
+            self.logger.error("************** A  button is not working as expected ****************")
             assert False
