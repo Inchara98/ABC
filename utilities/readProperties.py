@@ -252,3 +252,34 @@ class ReadConfig:
                 self.logger.error("*********** Course Values are Not Integers *************")
                 count = count + 1
         return count
+
+    # District Wise Status
+    @staticmethod
+    def test_check_district_program_dropdown_options(self, driver):
+        self.driver.find_element(By.XPATH, self.pageobjects.click_district_program).click()
+        time.sleep(1)
+        count = 0
+        options = driver.find_elements(By.XPATH, self.pageobjects.dropdown_options)
+        if len(options) > 0:
+            self.logger.info("************** Program Dropdown Showing Options *******************")
+            assert True
+        else:
+            self.logger.error("****************** Program Dropdown is Empty... *************************")
+            count = count + 1
+        return count
+
+    @staticmethod
+    def test_check_states_dropdown_options(self, driver):
+        self.driver.find_element(By.XPATH, self.pageobjects.click_state_options).click()
+        time.sleep(1)
+        count = 0
+        options = driver.find_elements(By.XPATH, self.pageobjects.dropdown_options)
+        if len(options) > 0:
+            self.logger.info("************** State Dropdown Showing Options *******************")
+            assert True
+        else:
+            self.logger.error("****************** State Dropdown is Empty... *************************")
+            count = count + 1
+        return count
+
+

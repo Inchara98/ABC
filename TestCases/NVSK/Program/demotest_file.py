@@ -485,3 +485,124 @@ class Test_Nishtha_Dashboard:
     #     else:
     #         self.logger.error("************** A  button is not working as expected ****************")
     #         assert False
+
+    #   % against Potential Base
+    def test_click_on_the_potential_tab_button(self):
+        self.driver.find_element(By.ID, self.pageobjects.Potential_Base).click()
+        time.sleep(2)
+        result = self.driver.find_element(By.ID, self.pageobjects.Potential_Base).get_attribute('aria-selected')
+        if "true" == result:
+            self.logger.info("************* Potential Base Tab is Clicked *************")
+            assert True
+        else:
+            self.logger.error("**************** Potential Base Tab is not clicked *********************")
+            assert False
+
+    def test_program_potential_dropdown_options(self):
+        self.driver.find_element(By.ID, self.pageobjects.Potential_Base).click()
+        time.sleep(2)
+        result = self.data.test_check_nishtha_dropdown_options(self, driver=self.driver)
+        if result == 0:
+            pass
+        else:
+            self.logger.error("*********** Potential Program Dropdown not having Options **********")
+            assert False
+
+    def test_potential_select_second_option_of_program_dropdown(self):
+        self.driver.find_element(By.ID, self.pageobjects.Potential_Base).click()
+        time.sleep(2)
+        result = self.data.test_check_selection_nishtha_2_options(self, driver=self.driver)
+        print(result)
+        if result == 0:
+            pass
+        else:
+            self.logger.error("*********** NISHTHA 2.0 Option is not Selected **********")
+            assert False
+
+    def test_potential_select_third_option_of_program_dropdown(self):
+        self.driver.find_element(By.ID, self.pageobjects.Potential_Base).click()
+        time.sleep(2)
+        result = self.data.test_check_selection_nishtha_3_options(self, driver=self.driver)
+        print(result)
+        if result == 0:
+            pass
+        else:
+            self.logger.error("*********** NISHTHA 3.0 Option is not Selected **********")
+            assert False
+
+    def test_potential_select_First_option_of_program_dropdown(self):
+        # self.driver.find_element(By.ID, self.pageobjects.Implementation_Status).click()
+        time.sleep(2)
+        result = self.data.test_check_selection_nishtha_1_options(self, driver=self.driver)
+        print(result)
+        if result == 0:
+            pass
+        else:
+            self.logger.error("*********** NISHTHA 1.0 Option is not Selected **********")
+            assert False
+
+    #   District Wise Status
+    def test_click_on_the_district_status_tab_button(self):
+        self.driver.find_element(By.ID, self.pageobjects.District_Status).click()
+        time.sleep(2)
+        result = self.driver.find_element(By.ID, self.pageobjects.District_Status).get_attribute('aria-selected')
+        if "true" == result:
+            self.logger.info("************* District Status Tab is Clicked *************")
+            assert True
+        else:
+            self.logger.error("**************** District Status Tab is not clicked *********************")
+            assert False
+
+    def test_program_district_status_dropdown_options(self):
+        self.driver.find_element(By.ID, self.pageobjects.District_Status).click()
+        time.sleep(2)
+        result = self.data.test_check_nishtha_dropdown_options(self, driver=self.driver)
+        if result == 0:
+            pass
+        else:
+            self.logger.error("*********** District Wise Program Dropdown not having Options **********")
+            assert False
+
+    def test_districtwise_select_second_option_of_program_dropdown(self):
+        self.driver.find_element(By.ID, self.pageobjects.District_Status).click()
+        time.sleep(2)
+        result = self.data.test_check_selection_nishtha_2_options(self, driver=self.driver)
+        print(result)
+        if result == 0:
+            pass
+        else:
+            self.logger.error("*********** NISHTHA 2.0 Option is not Selected **********")
+            assert False
+
+    def test_districtwise_select_third_option_of_program_dropdown(self):
+        self.driver.find_element(By.ID, self.pageobjects.District_Status).click()
+        time.sleep(2)
+        result = self.data.test_check_selection_nishtha_3_options(self, driver=self.driver)
+        print(result)
+        if result == 0:
+            pass
+        else:
+            self.logger.error("*********** NISHTHA 3.0 Option is not Selected **********")
+            assert False
+
+    def test_district_wise_select_First_option_of_program_dropdown(self):
+        self.driver.find_element(By.ID, self.pageobjects.District_Status).click()
+        time.sleep(2)
+        result = self.data.test_check_selection_nishtha_1_options(self, driver=self.driver)
+        print(result)
+        if result == 0:
+            pass
+        else:
+            self.logger.error("*********** NISHTHA 1.0 Option is not Selected **********")
+            assert False
+
+    def test_district_program_dropdown_options(self):
+        self.driver.find_element(By.ID, self.pageobjects.District_Status).click()
+        time.sleep(2)
+        result = self.data.test_check_nishtha_dropdown_options(self, driver=self.driver)
+        if result == 0:
+            pass
+        else:
+            self.logger.error("*********** District Wise Program Dropdown not having Options **********")
+            assert False
+

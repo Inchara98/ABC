@@ -50,4 +50,9 @@ class Program_Objects:
     medium_values = "//td[3]"
 
     # % against potential base
-    PAP_Base = "mat-tab-label-2-3"
+    Potential_Base = "mat-tab-label-2-3"
+
+    # District Wise Status
+    District_Status = "mat-tab-label-2-3"
+    click_district_program = "//ng-select[@id='filter-Program']/div/div/div[3]/input"
+    click_state_options = "//ng-select[@id='filter-State/UT']/div/div/div[3]/input"
