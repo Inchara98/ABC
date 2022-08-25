@@ -205,7 +205,7 @@ class ReadConfig:
         return count
 
     @staticmethod
-    def test_validate_course_column_validate(self,driver):
+    def test_validate_course_column_validate(self, driver):
         course_tablevals = []
         count = 0
         self.driver.find_element(By.ID, self.pageobjects.CM_status).click()
@@ -229,7 +229,7 @@ class ReadConfig:
         return count
 
     @staticmethod
-    def test_validate_medium_column_values(self,driver):
+    def test_validate_medium_column_values(self, driver):
         medium_tablevals = []
         count = 0
         self.driver.find_element(By.ID, self.pageobjects.CM_status).click()
@@ -282,4 +282,20 @@ class ReadConfig:
             count = count + 1
         return count
 
-
+    @staticmethod
+    def selecting_the_state_dropdown_options(self, driver):
+        count = 0
+        self.driver.find_element(By.XPATH, self.pageobjects.click_state_options).click()
+        time.sleep(1)
+        state_list = self.driver.find_elements(By.XPATH, self.pageobjects.dropdown_options)
+        for i in range(len(state_list)):
+            state_options = self.driver.find_element(By.ID, self.pageobjects.state_names_id + str(i))
+            state_options.click()
+            statename = self.driver.find_element(By.ID, self.pageobjects.state_names_id + str(i) + "/span").text
+            if statename in self.driver.page_source:
+                self.logger.info("****************** State Name are Selecting From Dropdown **********************")
+                assert True
+            else:
+                self.logger.error("**************** State Name Options are not Selected ********************")
+                count = count + 1
+        return count

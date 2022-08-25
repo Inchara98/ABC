@@ -56,3 +56,7 @@ class Program_Objects:
     District_Status = "mat-tab-label-2-3"
     click_district_program = "//ng-select[@id='filter-Program']/div/div/div[3]/input"
     click_state_options = "//ng-select[@id='filter-State/UT']/div/div/div[3]/input"
+    state_names_id = "aff430dd515c-"
+
+    # Course wise Tab
+    Course_Status = "mat-tab-label-0-4"
