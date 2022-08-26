@@ -138,11 +138,11 @@ class ReadConfig:
         return count
 
     @staticmethod
-    def test_check_nishtha_dropdown_options(self, driver):
+    def test_check_nishtha_dropdown_options(self):
         self.driver.find_element(By.XPATH, self.pageobjects.Choose_Program).click()
         time.sleep(1)
         count = 0
-        options = driver.find_elements(By.XPATH, self.pageobjects.dropdown_options)
+        options = self.driver.find_elements(By.XPATH, self.pageobjects.dropdown_options)
         if len(options) > 0:
             self.logger.info("************** Program Dropdown Showing Options *******************")
             assert True
@@ -152,7 +152,7 @@ class ReadConfig:
         return count
 
     @staticmethod
-    def test_check_selection_nishtha_2_options(self, driver):
+    def test_check_selection_nishtha_2_options(self):
         count = 0
         self.driver.find_element(By.XPATH, self.pageobjects.Choose_Program).click()
         time.sleep(1)
@@ -167,7 +167,7 @@ class ReadConfig:
         return count
 
     @staticmethod
-    def test_check_selection_nishtha_1_options(self, driver):
+    def test_check_selection_nishtha_1_options(self):
         count = 0
         self.driver.find_element(By.XPATH, self.pageobjects.Choose_Program).click()
         time.sleep(1)
@@ -185,7 +185,7 @@ class ReadConfig:
         return count
 
     @staticmethod
-    def test_check_selection_nishtha_3_options(self, driver):
+    def test_check_selection_nishtha_3_options(self):
         count = 0
         self.driver.find_element(By.XPATH, self.pageobjects.Choose_Program).click()
         time.sleep(1)
@@ -199,7 +199,7 @@ class ReadConfig:
         return count
 
     @staticmethod
-    def test_validate_state_column_names(self, driver):
+    def test_validate_state_column_names(self):
         state_tablevals = []
         count = 0
         self.driver.find_element(By.ID, self.pageobjects.CM_status).click()
@@ -216,7 +216,7 @@ class ReadConfig:
         return count
 
     @staticmethod
-    def test_validate_course_column_validate(self, driver):
+    def test_validate_course_column_validate(self):
         course_tablevals = []
         count = 0
         self.driver.find_element(By.ID, self.pageobjects.CM_status).click()
@@ -240,7 +240,7 @@ class ReadConfig:
         return count
 
     @staticmethod
-    def test_validate_medium_column_values(self, driver):
+    def test_validate_medium_column_values(self):
         medium_tablevals = []
         count = 0
         self.driver.find_element(By.ID, self.pageobjects.CM_status).click()
@@ -266,11 +266,11 @@ class ReadConfig:
 
     # District Wise Status
     @staticmethod
-    def test_check_district_program_dropdown_options(self, driver):
+    def test_check_district_program_dropdown_options(self):
         self.driver.find_element(By.XPATH, self.pageobjects.click_district_program).click()
         time.sleep(1)
         count = 0
-        options = driver.find_elements(By.XPATH, self.pageobjects.dropdown_options)
+        options = self.driver.find_elements(By.XPATH, self.pageobjects.dropdown_options)
         if len(options) > 0:
             self.logger.info("************** Program Dropdown Showing Options *******************")
             assert True
@@ -280,11 +280,11 @@ class ReadConfig:
         return count
 
     @staticmethod
-    def test_check_states_dropdown_options(self, driver):
+    def test_check_states_dropdown_options(self):
         self.driver.find_element(By.XPATH, self.pageobjects.click_state_options).click()
         time.sleep(1)
         count = 0
-        options = driver.find_elements(By.XPATH, self.pageobjects.dropdown_options)
+        options = self.driver.find_elements(By.XPATH, self.pageobjects.dropdown_options)
         if len(options) > 0:
             self.logger.info("************** State Dropdown Showing Options *******************")
             assert True
@@ -294,7 +294,7 @@ class ReadConfig:
         return count
 
     @staticmethod
-    def selecting_the_state_dropdown_options(self, driver):
+    def selecting_the_state_dropdown_options(self):
         count = 0
         self.driver.find_element(By.XPATH, self.pageobjects.click_state_options).click()
         time.sleep(1)

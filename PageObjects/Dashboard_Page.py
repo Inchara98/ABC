@@ -4,27 +4,31 @@ class Dashboard_Objects:
     password = "password1"
     login_btn = "login"
 
+    L = r'L\.|[^\d.]'
+    K = r'K\.|[^\d.]'
+
     # List of selenium locator of dashboard screen
     user_name_field = ""
     password_filed = ""
     login_button = ""
     login_logfile = "../../../Logs/Login.log"
     dashboard_logfile = "../../../Logs/Dashboard.log"
+    Dashboard_btn = "menu-item-0"
 
     # Nishtha Card
     nishtha_info = "//sb-cqube-program-card[1]/div/img"
     total_teachers = "//sb-cqube-program-card[1]/div/div[2]/div[1]/span[1]"
-    total_course = "//sb-cqube-program-card[1]/div/div[2]/div[1]/span[2]"
-    teacher_text = "//sb-cqube-program-card[1]/div/div[2]/div[2]/span[1]"
+    total_course = "//sb-cqube-program-card[1]/div/div[2]/div[2]/span[1]"
+    teacher_text = "//sb-cqube-program-card[1]/div/div[2]/div[1]/span[2]"
     course_text = "//sb-cqube-program-card[1]/div/div[2]/div[2]/span[2]"
     Nisha_dashboard = "//sb-cqube-program-card[1]/div/button"
 
     # Diksha ETB abd e-Content
     diksha_info = "//sb-cqube-program-card[2]/div/img"
     total_content = "//sb-cqube-program-card[2]/div/div[2]/div[1]/span[1]"
-    total_etbs = "//sb-cqube-program-card[2]/div/div[2]/div[1]/span[2]"
-    content_text = "//sb-cqube-program-card[2]/div/div[2]/div[2]/span[1]"
-    etb_text = "//sb-cqube-program-card[2]/div/div[2]/div[1]/span[2]"
+    total_etbs = "//sb-cqube-program-card[2]/div/div[2]/div[2]/span[1]"
+    content_text = "//sb-cqube-program-card[2]/div/div[2]/div[1]/span[2]"
+    etb_text = "//sb-cqube-program-card[2]/div/div[2]/div[2]/span[2]"
     Diksha_dashboard = "//sb-cqube-program-card[2]/div/button"
 
     # Micro-Improvements
@@ -38,7 +42,7 @@ class Dashboard_Objects:
     # PM POSHAN
     pm_info = "//sb-cqube-program-card[4]/div/img"
     total_schools = "//sb-cqube-program-card[4]/div/div[2]/div[1]/span[1]"
-    total_state = "//sb-cqube-program-card[4]/div/div[2]/div[1]/span[2]"
+    total_state = "//sb-cqube-program-card[4]/div/div[2]/div[2]/span[1]"
     schools_text = "//sb-cqube-program-card[4]/div/div[2]/div[1]/span[2]"
     pmstate_text = "//sb-cqube-program-card[4]/div/div[2]/div[2]/span[2]"
     PM_dashboard = "//sb-cqube-program-card[4]/div/button"
@@ -78,15 +82,15 @@ class Dashboard_Objects:
     # NCERT Quiz
     ncert_info = "//sb-cqube-program-card[9]/div/img"
     total_enrolment = "//sb-cqube-program-card[9]/div/div[2]/div[1]/span[1]"
-    total_certification = "//sb-cqube-program-card[9]/div/div[2]/div[1]/span[2]"
-    enrolment_text = "//sb-cqube-program-card[9]/div/div[2]/div[2]/span[1]"
+    total_certification = "//sb-cqube-program-card[9]/div/div[2]/div[2]/span[1]"
+    enrolment_text = "//sb-cqube-program-card[9]/div/div[2]/div[1]/span[2]"
     certification_text = "//sb-cqube-program-card[9]/div/div[2]/div[2]/span[2]"
     NCERT_dashboard = "//sb-cqube-program-card[9]/div/button"
 
     # NCF
     ncf_info = "//sb-cqube-program-card[10]/div/img"
     total_participating = "//sb-cqube-program-card[10]/div/div[2]/div[1]/span[1]"
-    total_paper = "//sb-cqube-program-card[10]/div/div[2]/div[1]/span[2]"
-    participating_text = "//sb-cqube-program-card[10]/div/div[2]/div[2]/span[1]"
+    total_paper = "//sb-cqube-program-card[10]/div/div[2]/div[2]/span[1]"
+    participating_text = "//sb-cqube-program-card[10]/div/div[2]/div[2]/span[2]"
     paper_text = "//sb-cqube-program-card[10]/div/div[2]/div[2]/span[2]"
     NCF_dashboard = "//sb-cqube-program-card[10]/div/button"

@@ -141,7 +141,7 @@ class Test_Nishtha_Dashboard:
     def test_program_dropdown_options(self):
         # self.driver.find_element(By.ID, self.pageobjects.Implementation_Status).click()
         time.sleep(2)
-        result = self.data.test_check_nishtha_dropdown_options(self, driver=self.driver)
+        result = self.data.test_check_nishtha_dropdown_options(self.driver)
         print(result)
         if result == 0:
             pass
@@ -152,7 +152,7 @@ class Test_Nishtha_Dashboard:
     def test_select_second_option_of_program_dropdown(self):
         # self.driver.find_element(By.ID, self.pageobjects.Implementation_Status).click()
         time.sleep(2)
-        result = self.data.test_check_selection_nishtha_2_options(self, driver=self.driver)
+        result = self.data.test_check_selection_nishtha_2_options(self.driver)
         print(result)
         if result == 0:
             pass
@@ -163,7 +163,7 @@ class Test_Nishtha_Dashboard:
     def test_select_third_option_of_program_dropdown(self):
         # self.driver.find_element(By.ID, self.pageobjects.Implementation_Status).click()
         time.sleep(2)
-        result = self.data.test_check_selection_nishtha_3_options(self, driver=self.driver)
+        result = self.data.test_check_selection_nishtha_3_options(self.driver)
         print(result)
         if result == 0:
             pass
@@ -174,13 +174,14 @@ class Test_Nishtha_Dashboard:
     def test_select_First_option_of_program_dropdown(self):
         self.driver.find_element(By.ID, self.pageobjects.Implementation_Status).click()
         time.sleep(2)
-        result = self.data.test_check_selection_nishtha_1_options(self, driver=self.driver)
+        result = self.data.test_check_selection_nishtha_1_options(self.driver)
         print(result)
         if result == 0:
             pass
         else:
             self.logger.error("*********** NISHTHA 1.0 Option is not Selected **********")
             assert False
+
     def test_Implementation_Status_a_plus_button_on_cm_status(self):
         self.driver.find_element(By.ID, self.pageobjects.Implementation_Status).click()
         time.sleep(2)
@@ -221,7 +222,7 @@ class Test_Nishtha_Dashboard:
     def test_program_course_medium_dropdown_options(self):
         self.driver.find_element(By.ID, self.pageobjects.CM_status).click()
         time.sleep(2)
-        result = self.data.test_check_nishtha_dropdown_options(self, driver=self.driver)
+        result = self.data.test_check_nishtha_dropdown_options(self.driver)
         print(result)
         if result == 0:
             pass
@@ -232,7 +233,7 @@ class Test_Nishtha_Dashboard:
     def test_course_medium_select_second_option_of_program_dropdown(self):
         self.driver.find_element(By.ID, self.pageobjects.CM_status).click()
         time.sleep(2)
-        result = self.data.test_check_selection_nishtha_2_options(self, driver=self.driver)
+        result = self.data.test_check_selection_nishtha_2_options(self.driver)
         print(result)
         if result == 0:
             pass
@@ -243,7 +244,7 @@ class Test_Nishtha_Dashboard:
     def test_course_medium_select_third_option_of_program_dropdown(self):
         self.driver.find_element(By.ID, self.pageobjects.CM_status).click()
         time.sleep(2)
-        result = self.data.test_check_selection_nishtha_3_options(self, driver=self.driver)
+        result = self.data.test_check_selection_nishtha_3_options(self.driver)
         print(result)
         if result == 0:
             pass
@@ -254,7 +255,7 @@ class Test_Nishtha_Dashboard:
     def test_course_medium_select_First_option_of_program_dropdown(self):
         self.driver.find_element(By.ID, self.pageobjects.CM_status).click()
         time.sleep(2)
-        result = self.data.test_check_selection_nishtha_1_options(self, driver=self.driver)
+        result = self.data.test_check_selection_nishtha_1_options(self.driver)
         print(result)
         if result == 0:
             pass
@@ -265,25 +266,25 @@ class Test_Nishtha_Dashboard:
     def test_selection_of_first_option_check_table_values(self):
         self.driver.find_element(By.ID, self.pageobjects.CM_status).click()
         time.sleep(2)
-        result = self.data.test_check_selection_nishtha_1_options(self, driver=self.driver)
+        result = self.data.test_check_selection_nishtha_1_options(self.driver)
         if result == 0:
             pass
         else:
             self.logger.error("*********** NISHTHA 1.0 Option is not Selected **********")
             assert False
-        state_name = self.data.test_validate_state_column_names(self,driver=self.driver)
+        state_name = self.data.test_validate_state_column_names(self.driver)
         if state_name == 0:
             pass
         else:
             self.logger.error("*********** NISHTHA 1.0 State Names are not Proper **********")
             assert False
-        course_value = self.data.test_validate_course_column_validate(self,driver=self.driver)
+        course_value = self.data.test_validate_course_column_validate(self.driver)
         if course_value == 0:
             pass
         else:
             self.logger.error("*********** NISHTHA 1.0 Course Values are not Proper **********")
             assert False
-        medium_values = self.data.test_validate_medium_column_values(self,driver=self.driver)
+        medium_values = self.data.test_validate_medium_column_values(self.driver)
         if medium_values == 0:
             pass
         else:
@@ -293,25 +294,25 @@ class Test_Nishtha_Dashboard:
     def test_selection_of_second_option_check_table_values(self):
         self.driver.find_element(By.ID, self.pageobjects.CM_status).click()
         time.sleep(2)
-        result = self.data.test_check_selection_nishtha_2_options(self, driver=self.driver)
+        result = self.data.test_check_selection_nishtha_2_options(self.driver)
         if result == 0:
             pass
         else:
             self.logger.error("*********** NISHTHA 2.0 Option is not Selected **********")
             assert False
-        state_name = self.data.test_validate_state_column_names(self,driver=self.driver)
+        state_name = self.data.test_validate_state_column_names(self.driver)
         if state_name == 0:
             pass
         else:
             self.logger.error("*********** NISHTHA 2.0 State Names are not Proper **********")
             assert False
-        course_value = self.data.test_validate_course_column_validate(self,driver=self.driver)
+        course_value = self.data.test_validate_course_column_validate(self.driver)
         if course_value == 0:
             pass
         else:
             self.logger.error("*********** NISHTHA 2.0 Course Values are not Proper **********")
             assert False
-        medium_values = self.data.test_validate_medium_column_values(self,driver=self.driver)
+        medium_values = self.data.test_validate_medium_column_values(self.driver)
         if medium_values == 0:
             pass
         else:
@@ -321,25 +322,25 @@ class Test_Nishtha_Dashboard:
     def test_selection_of_third_option_check_table_values(self):
         self.driver.find_element(By.ID, self.pageobjects.CM_status).click()
         time.sleep(2)
-        result = self.data.test_check_selection_nishtha_3_options(self, driver=self.driver)
+        result = self.data.test_check_selection_nishtha_3_options(self.driver)
         if result == 0:
             pass
         else:
             self.logger.error("*********** NISHTHA 3.0 Option is not Selected **********")
             assert False
-        state_name = self.data.test_validate_state_column_names(self,driver=self.driver)
+        state_name = self.data.test_validate_state_column_names(self.driver)
         if state_name == 0:
             pass
         else:
             self.logger.error("*********** NISHTHA 3.0 State Names are not Proper **********")
             assert False
-        course_value = self.data.test_validate_course_column_validate(self,driver=self.driver)
+        course_value = self.data.test_validate_course_column_validate(self.driver)
         if course_value == 0:
             pass
         else:
             self.logger.error("*********** NISHTHA 3.0 Course Values are not Proper **********")
             assert False
-        medium_values = self.data.test_validate_medium_column_values(self,driver=self.driver)
+        medium_values = self.data.test_validate_medium_column_values(self.driver)
         if medium_values == 0:
             pass
         else:
@@ -535,7 +536,7 @@ class Test_Nishtha_Dashboard:
     def test_program_potential_dropdown_options(self):
         self.driver.find_element(By.ID, self.pageobjects.Potential_Base).click()
         time.sleep(2)
-        result = self.data.test_check_nishtha_dropdown_options(self, driver=self.driver)
+        result = self.data.test_check_nishtha_dropdown_options(self.driver)
         if result == 0:
             pass
         else:
@@ -545,7 +546,7 @@ class Test_Nishtha_Dashboard:
     def test_potential_select_second_option_of_program_dropdown(self):
         self.driver.find_element(By.ID, self.pageobjects.Potential_Base).click()
         time.sleep(2)
-        result = self.data.test_check_selection_nishtha_2_options(self, driver=self.driver)
+        result = self.data.test_check_selection_nishtha_2_options(self.driver)
         print(result)
         if result == 0:
             pass
@@ -556,7 +557,7 @@ class Test_Nishtha_Dashboard:
     def test_potential_select_third_option_of_program_dropdown(self):
         self.driver.find_element(By.ID, self.pageobjects.Potential_Base).click()
         time.sleep(2)
-        result = self.data.test_check_selection_nishtha_3_options(self, driver=self.driver)
+        result = self.data.test_check_selection_nishtha_3_options(self.driver)
         print(result)
         if result == 0:
             pass
@@ -567,7 +568,7 @@ class Test_Nishtha_Dashboard:
     def test_potential_select_First_option_of_program_dropdown(self):
         self.driver.find_element(By.ID, self.pageobjects.Potential_Base).click()
         time.sleep(2)
-        result = self.data.test_check_selection_nishtha_1_options(self, driver=self.driver)
+        result = self.data.test_check_selection_nishtha_1_options(self.driver)
         print(result)
         if result == 0:
             pass
@@ -626,7 +627,7 @@ class Test_Nishtha_Dashboard:
     def test_program_district_status_dropdown_options(self):
         self.driver.find_element(By.ID, self.pageobjects.District_Status).click()
         time.sleep(2)
-        result = self.data.test_check_district_program_dropdown_options(self, driver=self.driver)
+        result = self.data.test_check_district_program_dropdown_options(self.driver)
         if result == 0:
             pass
         else:
@@ -636,7 +637,7 @@ class Test_Nishtha_Dashboard:
     def test_state_district_status_dropdown_options(self):
         self.driver.find_element(By.ID, self.pageobjects.District_Status).click()
         time.sleep(2)
-        result = self.data.test_check_states_dropdown_options(self, driver=self.driver)
+        result = self.data.test_check_states_dropdown_options(self.driver)
         if result == 0:
             pass
         else:
@@ -646,7 +647,7 @@ class Test_Nishtha_Dashboard:
     def test_district_wise_select_second_option_of_program_dropdown(self):
         self.driver.find_element(By.ID, self.pageobjects.District_Status).click()
         time.sleep(2)
-        result = self.data.test_check_selection_nishtha_2_options(self, driver=self.driver)
+        result = self.data.test_check_selection_nishtha_2_options(self.driver)
         print(result)
         if result == 0:
             pass
@@ -657,7 +658,7 @@ class Test_Nishtha_Dashboard:
     def test_district_wise_select_third_option_of_program_dropdown(self):
         self.driver.find_element(By.ID, self.pageobjects.District_Status).click()
         time.sleep(2)
-        result = self.data.test_check_selection_nishtha_3_options(self, driver=self.driver)
+        result = self.data.test_check_selection_nishtha_3_options(self.driver)
         print(result)
         if result == 0:
             pass
@@ -668,7 +669,7 @@ class Test_Nishtha_Dashboard:
     def test_district_wise_select_First_option_of_program_dropdown(self):
         self.driver.find_element(By.ID, self.pageobjects.District_Status).click()
         time.sleep(2)
-        result = self.data.test_check_selection_nishtha_1_options(self, driver=self.driver)
+        result = self.data.test_check_selection_nishtha_1_options(self.driver)
         if result == 0:
             pass
         else:
@@ -678,7 +679,7 @@ class Test_Nishtha_Dashboard:
     def test_overall_program_with_all_the_states(self):
         self.driver.find_element(By.ID, self.pageobjects.District_Status).click()
         time.sleep(2)
-        result = self.data.selecting_the_state_dropdown_options(self, driver=self.driver)
+        result = self.data.selecting_the_state_dropdown_options(self.driver)
         if result == 0:
             pass
         else:
@@ -692,7 +693,7 @@ class Test_Nishtha_Dashboard:
         time.sleep(1)
         self.driver.find_element(By.XPATH, self.pageobjects.Nishtha_1).click()
         time.sleep(2)
-        result = self.data.selecting_the_state_dropdown_options(self, driver=self.driver)
+        result = self.data.selecting_the_state_dropdown_options(self.driver)
         if result == 0:
             pass
         else:
@@ -706,7 +707,7 @@ class Test_Nishtha_Dashboard:
         time.sleep(1)
         self.driver.find_element(By.XPATH, self.pageobjects.Nishtha_2).click()
         time.sleep(2)
-        result = self.data.selecting_the_state_dropdown_options(self, driver=self.driver)
+        result = self.data.selecting_the_state_dropdown_options(self.driver)
         if result == 0:
             pass
         else:
@@ -720,7 +721,7 @@ class Test_Nishtha_Dashboard:
         time.sleep(1)
         self.driver.find_element(By.XPATH, self.pageobjects.Nishtha_3).click()
         time.sleep(2)
-        result = self.data.selecting_the_state_dropdown_options(self, driver=self.driver)
+        result = self.data.selecting_the_state_dropdown_options(self.driver)
         if result == 0:
             pass
         else:
@@ -778,7 +779,7 @@ class Test_Nishtha_Dashboard:
     def test_program_course_status_dropdown_options(self):
         self.driver.find_element(By.ID, self.pageobjects.Course_Status).click()
         time.sleep(2)
-        result = self.data.test_check_district_program_dropdown_options(self, driver=self.driver)
+        result = self.data.test_check_district_program_dropdown_options(self.driver)
         if result == 0:
             pass
         else:
@@ -788,7 +789,7 @@ class Test_Nishtha_Dashboard:
     def test_state_course_status_dropdown_options(self):
         self.driver.find_element(By.ID, self.pageobjects.Course_Status).click()
         time.sleep(2)
-        result = self.data.test_check_states_dropdown_options(self, driver=self.driver)
+        result = self.data.test_check_states_dropdown_options(self.driver)
         if result == 0:
             pass
         else:
@@ -798,7 +799,7 @@ class Test_Nishtha_Dashboard:
     def test_course_district_wise_select_second_option_of_program_dropdown(self):
         self.driver.find_element(By.ID, self.pageobjects.Course_Status).click()
         time.sleep(2)
-        result = self.data.test_check_selection_nishtha_2_options(self, driver=self.driver)
+        result = self.data.test_check_selection_nishtha_2_options(self.driver)
         print(result)
         if result == 0:
             pass
@@ -809,7 +810,7 @@ class Test_Nishtha_Dashboard:
     def test_course_course_district_wise_select_third_option_of_program_dropdown(self):
         self.driver.find_element(By.ID, self.pageobjects.Course_Status).click()
         time.sleep(2)
-        result = self.data.test_check_selection_nishtha_3_options(self, driver=self.driver)
+        result = self.data.test_check_selection_nishtha_3_options(self.driver)
         print(result)
         if result == 0:
             pass
@@ -820,7 +821,7 @@ class Test_Nishtha_Dashboard:
     def test_course_district_wise_select_First_option_of_program_dropdown(self):
         self.driver.find_element(By.ID, self.pageobjects.Course_Status).click()
         time.sleep(2)
-        result = self.data.test_check_selection_nishtha_1_options(self, driver=self.driver)
+        result = self.data.test_check_selection_nishtha_1_options(self.driver)
         if result == 0:
             pass
         else:
@@ -834,7 +835,7 @@ class Test_Nishtha_Dashboard:
         time.sleep(1)
         self.driver.find_element(By.XPATH, self.pageobjects.Nishtha_1).click()
         time.sleep(2)
-        result = self.data.selecting_the_state_dropdown_options(self, driver=self.driver)
+        result = self.data.selecting_the_state_dropdown_options(self.driver)
         if result == 0:
             pass
         else:
@@ -848,7 +849,7 @@ class Test_Nishtha_Dashboard:
         time.sleep(1)
         self.driver.find_element(By.XPATH, self.pageobjects.Nishtha_2).click()
         time.sleep(2)
-        result = self.data.selecting_the_state_dropdown_options(self, driver=self.driver)
+        result = self.data.selecting_the_state_dropdown_options(self.driver)
         if result == 0:
             pass
         else:
@@ -862,12 +863,13 @@ class Test_Nishtha_Dashboard:
         time.sleep(1)
         self.driver.find_element(By.XPATH, self.pageobjects.Nishtha_3).click()
         time.sleep(2)
-        result = self.data.selecting_the_state_dropdown_options(self, driver=self.driver)
+        result = self.data.selecting_the_state_dropdown_options(self.driver)
         if result == 0:
             pass
         else:
             self.logger.error("*********** State Names are not selected from Dropdown **********")
             assert False
+
     def test_Course_Status_a_plus_button_on_cm_status(self):
         self.driver.find_element(By.ID, self.pageobjects.Course_Status).click()
         time.sleep(2)
