@@ -172,20 +172,25 @@ class Test_Nishtha_Dashboard:
             assert False
 
     def test_select_First_option_of_program_dropdown(self):
-        self.driver.find_element(By.ID, self.pageobjects.Implementation_Status).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Implementation_Status_tab).click()
         time.sleep(2)
-        result = self.data.test_check_selection_nishtha_1_options(self.driver)
+        result = self.data.test_check_selection_nishtha_1_options(self,driver =self.driver)
         print(result)
         if result == 0:
             pass
         else:
             self.logger.error("*********** NISHTHA 1.0 Option is not Selected **********")
             assert False
+        res2 = self.data.get_map_tooltip_info_validation(self, driver=self.driver)
+        if "NISHTHA 1.0" in res2[0]:
+            pass
+        else:
+            self.logger.error("Selected Option is not showing in the map tooltip. ")
 
     def test_Implementation_Status_a_plus_button_on_cm_status(self):
         self.driver.find_element(By.ID, self.pageobjects.Implementation_Status).click()
         time.sleep(2)
-        a_plus = self.data.test_click_on_A_plus_button(self.driver)
+        a_plus = self.data.test_click_on_A_plus_button(self, driver=self.driver)
         if a_plus == 0:
             self.logger.info("********** A+ button is working as expected ******************")
             self.driver.refresh()
@@ -197,7 +202,7 @@ class Test_Nishtha_Dashboard:
     def test_Implementation_Status_a_minus_button_on_cm_status(self):
         self.driver.find_element(By.ID, self.pageobjects.Implementation_Status).click()
         time.sleep(2)
-        a_minus = self.data.test_click_on_A_minus_button(self.driver)
+        a_minus = self.data.test_click_on_A_minus_button(self, driver=self.driver)
         if a_minus == 0:
             self.logger.info("********** A- button is working as expected ******************")
             self.driver.refresh()
@@ -209,7 +214,7 @@ class Test_Nishtha_Dashboard:
     def test_Implementation_Status_a_default_button_on_cm_status(self):
         self.driver.find_element(By.ID, self.pageobjects.Implementation_Status).click()
         time.sleep(2)
-        a_plus = self.data.test_click_on_A_default_button(self.driver)
+        a_plus = self.data.test_click_on_A_default_button(self, driver=self.driver)
         if a_plus == 0:
             self.logger.info("********** A button is working as expected ******************")
             self.driver.refresh()

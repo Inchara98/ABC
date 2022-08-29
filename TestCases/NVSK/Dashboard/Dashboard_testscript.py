@@ -397,30 +397,33 @@ class Test_Dashboard_Cards:
 
     def test_a_plus_button_on_cm_status(self):
         time.sleep(2)
-        a_plus = self.data.test_click_on_A_plus_button(self.driver)
+        a_plus = self.data.test_click_on_A_plus_button(self, driver=self.driver)
         if a_plus == 0:
             self.logger.info("********** A+ button is working as expected ******************")
             self.driver.refresh()
+            time.sleep(2)
             assert True
         else:
             self.logger.error("************** A+ button is not working as expected ****************")
             assert False
 
     def test_a_minus_button_on_cm_status(self):
-        a_minus = self.data.test_click_on_A_minus_button(self.driver)
+        a_minus = self.data.test_click_on_A_minus_button(self, driver=self.driver)
         if a_minus == 0:
             self.logger.info("********** A- button is working as expected ******************")
             self.driver.refresh()
+            time.sleep(2)
             assert True
         else:
             self.logger.error("************** A- button is not working as expected ****************")
             assert False
 
     def test_a_default_button_on_cm_status(self):
-        a_plus = self.data.test_click_on_A_default_button(self.driver)
+        a_plus = self.data.test_click_on_A_default_button(self, driver=self.driver)
         if a_plus == 0:
             self.logger.info("********** A button is working as expected ******************")
             self.driver.refresh()
+            time.sleep(2)
             assert True
         else:
             self.logger.error("************** A  button is not working as expected ****************")

@@ -5,6 +5,13 @@ class Program_Objects:
     a_plus = "font-size-increase"
     a_minus = "font-size-decrease"
     a_default = "font-size-reset"
+
+    # Tab xpath locators
+    Implementation_Status_tab = "//*[contains(text(),'Implementation Status')]"
+    Course_medium_tab = "//*[contains(text(),'Courses and Mediums status')]"
+    Potential_Base_tab = "//*[contains(text(),'% against Potential Base')]"
+    Course_wise_tab = "//*[contains(text(),'Course wise Status ')]"
+
     total_state = "//app-nishtha/div[1]/div/div[1]/sb-cqube-info-card/div/div/span[1]"
     total_enrollment = "//app-nishtha/div[1]/div/div[2]/sb-cqube-info-card/div/div/span[1]"
     total_completion = "//app-nishtha/div[1]/div/div[3]/sb-cqube-info-card/div/div/span[1]"

@@ -4,6 +4,11 @@ class Dashboard_Objects:
     password = "password1"
     login_btn = "login"
 
+    a_plus = "font-size-increase"
+    a_minus = "font-size-decreas" \
+              "e"
+    a_default = "font-size-reset"
+
     L = r'L\.|[^\d.]'
     K = r'K\.|[^\d.]'
 

@@ -3,6 +3,7 @@ import os
 import time
 from pathlib import Path
 from selenium import webdriver
+from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from PageObjects.Programs_Page import Program_Objects
 from get_directory import DirectoryPath
@@ -96,13 +97,14 @@ class ReadConfig:
         return driver
 
     @staticmethod
-    def test_click_on_A_default_button(self):
+    def test_click_on_A_default_button(self, driver):
         count = 0
         a_plus = self.driver.find_element(By.ID, self.pageobjects.a_default)
         a_plus.click()
         time.sleep(2)
         if 'style="font-size: 16px;"' in self.driver.page_source:
             self.logger.info("************* A button is clicked *************")
+            self.driver.refresh()
             assert True
         else:
             self.logger.error("************** A button is not clicked *******************")
@@ -110,13 +112,14 @@ class ReadConfig:
         return count
 
     @staticmethod
-    def test_click_on_A_plus_button(self):
+    def test_click_on_A_plus_button(self, driver):
         count = 0
         a_plus = self.driver.find_element(By.ID, self.pageobjects.a_plus)
         a_plus.click()
         time.sleep(2)
         if 'style="font-size: 18px;"' in self.driver.page_source:
             self.logger.info("************* A+ button is clicked *************")
+            self.driver.refresh()
             assert True
         else:
             self.logger.error("************** A+ button is not clicked *******************")
@@ -124,13 +127,14 @@ class ReadConfig:
         return count
 
     @staticmethod
-    def test_click_on_A_minus_button(self):
+    def test_click_on_A_minus_button(self, driver):
         count = 0
         a_plus = self.driver.find_element(By.ID, self.pageobjects.a_minus)
         a_plus.click()
         time.sleep(2)
-        if 'style="font-size: 16px;"' in self.driver.page_source:
+        if 'style="font-size: 14px;"' in self.driver.page_source:
             self.logger.info("************* A- button is clicked *************")
+            self.driver.refresh()
             assert True
         else:
             self.logger.error("************** A- button is not clicked *******************")
@@ -167,7 +171,7 @@ class ReadConfig:
         return count
 
     @staticmethod
-    def test_check_selection_nishtha_1_options(self):
+    def test_check_selection_nishtha_1_options(self,driver):
         count = 0
         self.driver.find_element(By.XPATH, self.pageobjects.Choose_Program).click()
         time.sleep(1)
@@ -310,3 +314,24 @@ class ReadConfig:
                 self.logger.error("**************** State Name Options are not Selected ********************")
                 count = count + 1
         return count
+
+    @staticmethod
+    def get_map_tooltip_info_validation(self,driver):
+        driver.implicitly_wait(30)
+        lst = self.driver.find_elements(By.CLASS_NAME, "leaflet-interactive")
+        print("No of States", len(lst) - 1)
+        blue_marks = 0
+        white_marks = 0
+        time.sleep(2)
+        map_data = []
+        for x in range(1, len(lst)):
+            if lst[x].get_attribute('fill') == '#FFFFFF':
+                white_marks = white_marks + 1
+            else:
+                blue_marks = blue_marks + 1
+            act = ActionChains(self.driver)
+            act.move_to_element(lst[x]).perform()
+            act.pause(4)
+            txt = self.driver.find_element(By.XPATH, "//div[@class='leaflet-pane leaflet-tooltip-pane']")
+            map_data.append(txt.text)
+        return map_data
