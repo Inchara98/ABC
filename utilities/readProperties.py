@@ -156,7 +156,7 @@ class ReadConfig:
         return count
 
     @staticmethod
-    def test_check_selection_nishtha_2_options(self):
+    def test_check_selection_nishtha_2_options(self,driver):
         count = 0
         self.driver.find_element(By.XPATH, self.pageobjects.Choose_Program).click()
         time.sleep(1)
@@ -168,37 +168,95 @@ class ReadConfig:
         else:
             self.logger.error("************** NISHTHA 2.0 option is not selected *****************")
             count = count + 1
+        map_data = []
+        lst = self.driver.find_elements(By.CLASS_NAME, "leaflet-interactive")
+        for x in range(1, len(lst)):
+            act = ActionChains(self.driver)
+            act.move_to_element(lst[x]).perform()
+            act.pause(3)
+            time.sleep(2)
+            txt = self.driver.find_element(By.XPATH, "//div[@class='leaflet-pane leaflet-tooltip-pane']")
+            map_data.append(txt.text)
+        if len(map_data) == len(lst) - 1:
+            print(len(map_data), len(lst) - 1, "Total tooltip is equal to total information's ")
+        else:
+            print(len(map_data), len(lst) - 1, "Total no of tooltip is not equal to information")
+        if "NISHTHA 2.0" in map_data[0]:
+            print("NISHTHA 2.0 IS PRESENT IN MAP TOOLTIP ")
+        else:
+            print("NISHTHA 2.0 IS NOT PRESENT ")
+            count = count + 1
         return count
 
     @staticmethod
     def test_check_selection_nishtha_1_options(self,driver):
         count = 0
+        map_data = []
         self.driver.find_element(By.XPATH, self.pageobjects.Choose_Program).click()
-        time.sleep(1)
-        self.driver.find_element(By.XPATH, self.pageobjects.Nishtha_2).click()
         time.sleep(2)
+        self.driver.find_element(By.XPATH, self.pageobjects.Nishtha_2).click()
+        time.sleep(3)
         self.driver.find_element(By.XPATH, self.pageobjects.Choose_Program).click()
-        time.sleep(1)
+        time.sleep(2)
         self.driver.find_element(By.XPATH, self.pageobjects.Nishtha_1).click()
+        time.sleep(3)
         if "NISHTHA 1.0" in self.driver.page_source:
             self.logger.info("************* NISHTHA 1.0 option is selected  ****************")
             assert True
         else:
             self.logger.error("************** NISHTHA 1.0 option is not selected *****************")
             count = count + 1
+        map_data = []
+        lst = driver.find_elements(By.CLASS_NAME, "leaflet-interactive")
+        for x in range(1, len(lst)):
+            act = ActionChains(driver)
+            act.move_to_element(lst[x]).perform()
+            act.pause(3)
+            time.sleep(2)
+            txt = driver.find_element(By.XPATH, "//div[@class='leaflet-pane leaflet-tooltip-pane']")
+            map_data.append(txt.text)
+        if len(map_data) == len(lst) - 1:
+            print(len(map_data), len(lst) - 1, "Total tooltip is equal to total information's ")
+        else:
+            print(len(map_data), len(lst) - 1, "Total no of tooltip is not equal to information")
+        if "NISHTHA 1.0" in map_data[0]:
+            print("NISHTHA 1.0 IS PRESENT IN MAP TOOLTIP ")
+        else:
+            print("NISHTHA 1.0 IS NOT PRESENT ")
+            count = count + 1
+
         return count
 
     @staticmethod
-    def test_check_selection_nishtha_3_options(self):
+    def test_check_selection_nishtha_3_options(self,driver):
         count = 0
         self.driver.find_element(By.XPATH, self.pageobjects.Choose_Program).click()
-        time.sleep(1)
+        time.sleep(2)
         self.driver.find_element(By.XPATH, self.pageobjects.Nishtha_3).click()
+        time.sleep(3)
         if "NISHTHA 3.0" in self.driver.page_source:
             self.logger.info("************* NISHTHA 3.0 option is selected  ****************")
             assert True
         else:
             self.logger.error("************** NISHTHA 3.0 option is not selected *****************")
+            count = count + 1
+        map_data = []
+        lst = self.driver.find_elements(By.CLASS_NAME, "leaflet-interactive")
+        for x in range(1, len(lst)):
+            act = ActionChains(self.driver)
+            act.move_to_element(lst[x]).perform()
+            act.pause(3)
+            time.sleep(2)
+            txt = self.driver.find_element(By.XPATH, "//div[@class='leaflet-pane leaflet-tooltip-pane']")
+            map_data.append(txt.text)
+        if len(map_data) == len(lst) - 1:
+            print(len(map_data), len(lst) - 1, "Total tooltip is equal to total information's ")
+        else:
+            print(len(map_data), len(lst) - 1, "Total no of tooltip is not equal to information")
+        if "NISHTHA 3.0" in map_data[0]:
+            print("NISHTHA 3.0 IS PRESENT IN MAP TOOLTIP ")
+        else:
+            print("NISHTHA 3.0 IS NOT PRESENT ")
             count = count + 1
         return count
 
