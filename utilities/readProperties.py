@@ -96,20 +96,6 @@ class ReadConfig:
         return driver
 
     @staticmethod
-    def navigate_to_Diksha():
-        p = DirectoryPath()
-        pageobjects = Program_Objects()
-        data = ReadConfig()
-        driver = webdriver.Chrome(executable_path=p.get_driver_path())
-        driver.maximize_window()
-        driver.get(data.getApplicationURL())
-        driver.implicitly_wait(30)
-        time.sleep(3)
-        driver.find_element(By.ID, pageobjects.Diksha).click()
-        time.sleep(3)
-        return driver
-
-    @staticmethod
     def test_click_on_A_default_button(self):
         count = 0
         a_plus = self.driver.find_element(By.ID, self.pageobjects.a_default)
