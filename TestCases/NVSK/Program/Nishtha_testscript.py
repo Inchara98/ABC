@@ -109,13 +109,6 @@ class Test_Nishtha_Dashboard:
             assert False
 
     def test_click_the_nishtha_button(self):
-        self.driver.find_element(By.ID, self.pageobjects.nishtha).click()
-        time.sleep(3)
-        if 'nishtha' in self.driver.current_url:
-            self.logger.info("************** Nishtha screen is displaying ***************")
-        else:
-            self.logger.error("*********** Nishtha page is not showing ************** ")
-            assert False
         self.driver.find_element(By.ID, self.pageobjects.dashboard).click()
         time.sleep(3)
         if 'dashboard' in self.driver.current_url:
@@ -125,6 +118,14 @@ class Test_Nishtha_Dashboard:
             assert False
         self.driver.find_element(By.ID, self.pageobjects.nishtha).click()
         time.sleep(3)
+        self.driver.find_element(By.ID, self.pageobjects.nishtha).click()
+        time.sleep(3)
+        if 'nishtha' in self.driver.current_url:
+            self.logger.info("************** Nishtha screen is displaying ***************")
+        else:
+            self.logger.error("*********** Nishtha page is not showing ************** ")
+            assert False
+
 
     # Implementation Status Tab
     def test_click_on_the_implementation_tab_button(self):
@@ -905,3 +906,4 @@ class Test_Nishtha_Dashboard:
         else:
             self.logger.error("************** A  button is not working as expected ****************")
             assert False
+

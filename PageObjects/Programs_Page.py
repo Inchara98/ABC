@@ -1,7 +1,9 @@
 class Program_Objects:
     # List of Selenium attributes of Program Screen
+    L = r'L\.|[^\d.]'
     dashboard = "menu-item-0"
     nishtha = "menu-item-1"
+    Diksha = "menu-item-2"
     a_plus = "font-size-increase"
     a_minus = "font-size-decrease"
     a_default = "font-size-reset"
@@ -60,3 +62,35 @@ class Program_Objects:
 
     # Course wise Tab
     Course_Status = "mat-tab-label-0-4"
+
+
+    #Diksha Program
+    Totalstates_info = "//app-digital-learning/div[1]/div/div[1]/sb-cqube-info-card/div/img"
+    Totalstates_UT = "//app-digital-learning/div[1]/div/div[1]/sb-cqube-info-card/div/div/span[1]"
+    Totalstates_text = "//app-digital-learning/div[1]/div/div[1]/sb-cqube-info-card/div/div/span[2]"
+    Total_ETB_info = "//app-digital-learning/div[1]/div/div[2]/sb-cqube-info-card/div/img"
+    Total_ETB = "//app-digital-learning/div[1]/div/div[2]/sb-cqube-info-card/div/div/span[1]"
+    Total_ETB_text = "//app-digital-learning/div[1]/div/div[2]/sb-cqube-info-card/div/div/span[2]"
+    Total_QR_Code_info = "//app-digital-learning/div[1]/div/div[3]/sb-cqube-info-card/div/img"
+    Total_QR_Code = "//app-digital-learning/div[1]/div/div[3]/sb-cqube-info-card/div/div/span[1]"
+    Total_QR_Code_text = "//app-digital-learning/div[1]/div/div[3]/sb-cqube-info-card/div/div/span[2]"
+    Total_Content_info = "//app-digital-learning/div[1]/div/div[4]/sb-cqube-info-card/div/img"
+    Total_Content = "//app-digital-learning/div[1]/div/div[4]/sb-cqube-info-card/div/div/span[1]"
+    Total_Content_text = "//app-digital-learning/div[1]/div/div[4]/sb-cqube-info-card/div/div/span[2]"
+    Total_time_spent_info = "//app-digital-learning/div[1]/div/div[5]/sb-cqube-info-card/div/img"
+    Total_time_spent = "//app-digital-learning/div[1]/div/div[5]/sb-cqube-info-card/div/div/span[1]"
+    Total_time_spent_text = "//app-digital-learning/div[1]/div/div[5]/sb-cqube-info-card/div/div/span[2]"
+
+    Implementation_Status_tab = "//app-digital-learning/div[2]/mat-tab-group/mat-tab-header/div/div/div/div[1]"
+
+    ETB_Coverage_Tab = "//*[contains(text(),'ETB Coverage Status')]"
+    State_column = "//th[@role='columnheader'][1]"
+    Curiculum_Textbook_column = "//th[@role='columnheader'][2]"
+    Energised_Textbook_column = "//th[@role='columnheader'][3]"
+    per_Energised_Textbook_column = "//th[@role='columnheader'][4]"
+    State_header = "//div[contains(text(),'State/UT name')]"
+    Curiculum_Textbook_header = "//div[contains(text(),'Total Curriculum Textbooks')]"
+    Energised_Textbook_header = "//div[contains(text(),'Total Energized Textbooks')]"
+    per_Energised_Textbook_header = "//div[contains(text(),'% Energized Textbooks')]"
+
+    Content_Coverage_Tab = "//app-digital-learning/div[2]/mat-tab-group/mat-tab-header/div/div/div/div[3]"
