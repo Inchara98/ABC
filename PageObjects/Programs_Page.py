@@ -7,13 +7,6 @@ class Program_Objects:
     a_plus = "font-size-increase"
     a_minus = "font-size-decrease"
     a_default = "font-size-reset"
-
-    # Tab xpath locators
-    Implementation_Status_tab = "//*[contains(text(),'Implementation Status')]"
-    Course_medium_tab = "//*[contains(text(),'Courses and Mediums status')]"
-    Potential_Base_tab = "//*[contains(text(),'% against Potential Base')]"
-    Course_wise_tab = "//*[contains(text(),'Course wise Status ')]"
-
     total_state = "//app-nishtha/div[1]/div/div[1]/sb-cqube-info-card/div/div/span[1]"
     total_enrollment = "//app-nishtha/div[1]/div/div[2]/sb-cqube-info-card/div/div/span[1]"
     total_completion = "//app-nishtha/div[1]/div/div[3]/sb-cqube-info-card/div/div/span[1]"
@@ -70,8 +63,7 @@ class Program_Objects:
     # Course wise Tab
     Course_Status = "mat-tab-label-0-4"
 
-
-    #Diksha Program
+    # Diksha Program
     Totalstates_info = "//app-digital-learning/div[1]/div/div[1]/sb-cqube-info-card/div/img"
     Totalstates_UT = "//app-digital-learning/div[1]/div/div[1]/sb-cqube-info-card/div/div/span[1]"
     Totalstates_text = "//app-digital-learning/div[1]/div/div[1]/sb-cqube-info-card/div/div/span[2]"
@@ -101,3 +93,6 @@ class Program_Objects:
     per_Energised_Textbook_header = "//div[contains(text(),'% Energized Textbooks')]"
 
     Content_Coverage_Tab = "//app-digital-learning/div[2]/mat-tab-group/mat-tab-header/div/div/div/div[3]"
+
+    Learning_session_potential_tab = "//*[contains(text(),'Learning Sessions on Potential Users')]"
+
