@@ -126,10 +126,9 @@ class Test_Nishtha_Dashboard:
             self.logger.error("*********** Nishtha page is not showing ************** ")
             assert False
 
-
     # Implementation Status Tab
     def test_click_on_the_implementation_tab_button(self):
-        # self.driver.find_element(By.ID, self.pageobjects.Implementation_Status).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Implementation_Status_tab).click()
         time.sleep(2)
         result = self.driver.find_element(By.ID, self.pageobjects.Implementation_Status).get_attribute('aria-selected')
         if "true" == result:
@@ -140,7 +139,7 @@ class Test_Nishtha_Dashboard:
             assert False
 
     def test_program_dropdown_options(self):
-        # self.driver.find_element(By.ID, self.pageobjects.Implementation_Status).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Implementation_Status_tab).click()
         time.sleep(2)
         result = self.data.test_check_nishtha_dropdown_options(self.driver)
         print(result)
@@ -151,9 +150,9 @@ class Test_Nishtha_Dashboard:
             assert False
 
     def test_select_second_option_of_program_dropdown(self):
-        # self.driver.find_element(By.ID, self.pageobjects.Implementation_Status).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Implementation_Status_tab).click()
         time.sleep(2)
-        result = self.data.test_check_selection_nishtha_2_options(self, driver=self.driver)
+        result = self.data.test_check_selection_nishtha_2_options(self)
         if result == 0:
             pass
         else:
@@ -161,9 +160,9 @@ class Test_Nishtha_Dashboard:
             assert False
 
     def test_select_third_option_of_program_dropdown(self):
-        # self.driver.find_element(By.ID, self.pageobjects.Implementation_Status).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Implementation_Status_tab).click()
         time.sleep(2)
-        result = self.data.test_check_selection_nishtha_3_options(self, driver=self.driver)
+        result = self.data.test_check_selection_nishtha_3_options(self)
         print(result)
         if result == 0:
             pass
@@ -219,7 +218,7 @@ class Test_Nishtha_Dashboard:
 
     #   Courses and Medium status Tab
     def test_program_course_medium_dropdown_options(self):
-        self.driver.find_element(By.ID, self.pageobjects.CM_status).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Course_medium_tab).click()
         time.sleep(2)
         result = self.data.test_check_nishtha_dropdown_options(self.driver)
         print(result)
@@ -230,7 +229,7 @@ class Test_Nishtha_Dashboard:
             assert False
 
     def test_course_medium_select_second_option_of_program_dropdown(self):
-        self.driver.find_element(By.ID, self.pageobjects.CM_status).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Course_medium_tab).click()
         time.sleep(2)
         result = self.data.test_check_selection_nishtha_2_options(self.driver)
         print(result)
@@ -241,7 +240,7 @@ class Test_Nishtha_Dashboard:
             assert False
 
     def test_course_medium_select_third_option_of_program_dropdown(self):
-        self.driver.find_element(By.ID, self.pageobjects.CM_status).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Course_medium_tab).click()
         time.sleep(2)
         result = self.data.test_check_selection_nishtha_3_options(self.driver)
         print(result)
@@ -252,9 +251,9 @@ class Test_Nishtha_Dashboard:
             assert False
 
     def test_course_medium_select_First_option_of_program_dropdown(self):
-        self.driver.find_element(By.ID, self.pageobjects.CM_status).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Course_medium_tab).click()
         time.sleep(2)
-        result = self.data.test_check_selection_nishtha_1_options(self.driver)
+        result = self.data.test_check_selection_nishtha_1_options(self, driver=self.driver)
         print(result)
         if result == 0:
             pass
@@ -263,15 +262,15 @@ class Test_Nishtha_Dashboard:
             assert False
 
     def test_selection_of_first_option_check_table_values(self):
-        self.driver.find_element(By.ID, self.pageobjects.CM_status).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Course_medium_tab).click()
         time.sleep(2)
-        result = self.data.test_check_selection_nishtha_1_options(self.driver)
+        result = self.data.test_check_selection_nishtha_1_options(self, driver=self.driver)
         if result == 0:
             pass
         else:
             self.logger.error("*********** NISHTHA 1.0 Option is not Selected **********")
             assert False
-        state_name = self.data.test_validate_state_column_names(self.driver)
+        state_name = self.data.test_validate_state_column_names(self)
         if state_name == 0:
             pass
         else:
@@ -291,7 +290,7 @@ class Test_Nishtha_Dashboard:
             assert False
 
     def test_selection_of_second_option_check_table_values(self):
-        self.driver.find_element(By.ID, self.pageobjects.CM_status).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Course_medium_tab).click()
         time.sleep(2)
         result = self.data.test_check_selection_nishtha_2_options(self.driver)
         if result == 0:
@@ -319,7 +318,7 @@ class Test_Nishtha_Dashboard:
             assert False
 
     def test_selection_of_third_option_check_table_values(self):
-        self.driver.find_element(By.ID, self.pageobjects.CM_status).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Course_medium_tab).click()
         time.sleep(2)
         result = self.data.test_check_selection_nishtha_3_options(self.driver)
         if result == 0:
@@ -349,9 +348,9 @@ class Test_Nishtha_Dashboard:
     def test_click_on_course_and_medium_tab(self):
         self.driver.find_element(By.ID, self.pageobjects.nishtha).click()
         time.sleep(5)
-        self.driver.find_element(By.ID, self.pageobjects.CM_status).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Course_medium_tab).click()
         time.sleep(3)
-        result = self.driver.find_element(By.ID, self.pageobjects.CM_status).get_attribute('aria-selected')
+        result = self.driver.find_element(By.XPATH, self.pageobjects.Course_medium_tab).get_attribute('aria-selected')
         if "true" == result:
             self.logger.info("************* Courses and Medium status is clicked *************")
             assert True
@@ -363,7 +362,7 @@ class Test_Nishtha_Dashboard:
         self.logger.info("**************Clicking table headers *****************")
         self.driver.find_element(By.ID, self.pageobjects.nishtha).click()
         time.sleep(5)
-        self.driver.find_element(By.ID, self.pageobjects.CM_status).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Course_medium_tab).click()
         time.sleep(3)
         status = self.driver.find_element(By.XPATH, self.pageobjects.state_sort).get_attribute('aria-sort')
 
@@ -386,7 +385,7 @@ class Test_Nishtha_Dashboard:
             assert False
 
     def test_check_table_courses_headers_clickable(self):
-        self.driver.find_element(By.ID, self.pageobjects.CM_status).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Course_medium_tab).click()
         time.sleep(2)
         status = self.driver.find_element(By.XPATH, self.pageobjects.course_sort).get_attribute('aria-sort')
         self.driver.find_element(By.XPATH, self.pageobjects.course_header).click()
@@ -407,7 +406,7 @@ class Test_Nishtha_Dashboard:
             assert False
 
     def test_check_table_mediums_headers_clickable(self):
-        self.driver.find_element(By.ID, self.pageobjects.CM_status).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Course_medium_tab).click()
         status = self.driver.find_element(By.XPATH, self.pageobjects.medium_sort).get_attribute('aria-sort')
         self.driver.find_element(By.XPATH, self.pageobjects.medium_header).click()
         now = self.driver.find_element(By.XPATH, self.pageobjects.medium_sort).get_attribute('aria-sort')
@@ -449,7 +448,7 @@ class Test_Nishtha_Dashboard:
 
     def test_check_course_table_values(self):
         course_tablevals = []
-        self.driver.find_element(By.ID, self.pageobjects.CM_status).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Course_medium_tab).click()
         course_name = self.driver.find_elements(By.XPATH, self.pageobjects.course_values)
         for i in range(1, len(course_name)):
             state_list = self.driver.find_element(By.XPATH, "//div/table/tbody/tr[" + str(i) + "]/td[2]")
@@ -470,7 +469,7 @@ class Test_Nishtha_Dashboard:
 
     def test_check_medium_table_values(self):
         medium_tablevals = []
-        self.driver.find_element(By.ID, self.pageobjects.CM_status).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Course_medium_tab).click()
         medium_val = self.driver.find_elements(By.XPATH, self.pageobjects.medium_values)
         for i in range(1, len(medium_val)):
             state_list = self.driver.find_element(By.XPATH, "//div/table/tbody/tr[" + str(i) + "]/td[3]")
@@ -491,9 +490,9 @@ class Test_Nishtha_Dashboard:
                 assert False
 
     def test_a_plus_button_on_cm_status(self):
-        self.driver.find_element(By.ID, self.pageobjects.CM_status).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Course_medium_tab).click()
         time.sleep(2)
-        a_plus = self.data.test_click_on_A_plus_button(self.driver)
+        a_plus = self.data.test_click_on_A_plus_button(self, driver=self.driver)
         if a_plus == 0:
             self.logger.info("********** A+ button is working as expected ******************")
             self.driver.refresh()
@@ -503,9 +502,9 @@ class Test_Nishtha_Dashboard:
             assert False
 
     def test_a_minus_button_on_cm_status(self):
-        self.driver.find_element(By.ID, self.pageobjects.CM_status).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Course_medium_tab).click()
         time.sleep(2)
-        a_minus = self.data.test_click_on_A_minus_button(self.driver)
+        a_minus = self.data.test_click_on_A_minus_button(self, driver=self.driver)
         if a_minus == 0:
             print("value :", a_minus)
             self.logger.info("********** A- button is working as expected ******************")
@@ -516,9 +515,9 @@ class Test_Nishtha_Dashboard:
             assert False
 
     def test_a_default_button_on_cm_status(self):
-        self.driver.find_element(By.ID, self.pageobjects.CM_status).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Course_medium_tab).click()
         time.sleep(2)
-        a_plus = self.data.test_click_on_A_default_button(self.driver)
+        a_plus = self.data.test_click_on_A_default_button(self, driver=self.driver)
         if a_plus == 0:
             self.logger.info("********** A button is working as expected ******************")
             self.driver.refresh()
@@ -574,7 +573,7 @@ class Test_Nishtha_Dashboard:
     def test_potential_select_First_option_of_program_dropdown(self):
         self.driver.find_element(By.ID, self.pageobjects.Potential_Base).click()
         time.sleep(2)
-        result = self.data.test_check_selection_nishtha_1_options(self.driver)
+        result = self.data.test_check_selection_nishtha_1_options(self, driver=self.driver)
         print(result)
         if result == 0:
             pass
@@ -585,7 +584,7 @@ class Test_Nishtha_Dashboard:
     def test_Potential_Base_a_plus_button_on_cm_status(self):
         self.driver.find_element(By.ID, self.pageobjects.Potential_Base).click()
         time.sleep(2)
-        a_plus = self.data.test_click_on_A_plus_button(self.driver)
+        a_plus = self.data.test_click_on_A_plus_button(self, driver=self.driver)
         if a_plus == 0:
             self.logger.info("********** A+ button is working as expected ******************")
             self.driver.refresh()
@@ -597,7 +596,7 @@ class Test_Nishtha_Dashboard:
     def test_Potential_Base_a_minus_button_on_cm_status(self):
         self.driver.find_element(By.ID, self.pageobjects.Potential_Base).click()
         time.sleep(2)
-        a_minus = self.data.test_click_on_A_minus_button(self.driver)
+        a_minus = self.data.test_click_on_A_minus_button(self, driver=self.driver)
         if a_minus == 0:
             self.logger.info("********** A- button is working as expected ******************")
             self.driver.refresh()
@@ -609,7 +608,7 @@ class Test_Nishtha_Dashboard:
     def test_Potential_Base_a_default_button_on_cm_status(self):
         self.driver.find_element(By.ID, self.pageobjects.Potential_Base).click()
         time.sleep(2)
-        a_plus = self.data.test_click_on_A_default_button(self.driver)
+        a_plus = self.data.test_click_on_A_default_button(self, driver=self.driver)
         if a_plus == 0:
             self.logger.info("********** A button is working as expected ******************")
             self.driver.refresh()
@@ -675,7 +674,7 @@ class Test_Nishtha_Dashboard:
     def test_district_wise_select_First_option_of_program_dropdown(self):
         self.driver.find_element(By.ID, self.pageobjects.District_Status).click()
         time.sleep(2)
-        result = self.data.test_check_selection_nishtha_1_options(self.driver)
+        result = self.data.test_check_selection_nishtha_1_options(self, driver=self.driver)
         if result == 0:
             pass
         else:
@@ -707,13 +706,13 @@ class Test_Nishtha_Dashboard:
             assert False
 
     def test_N2_option_with_state_list(self):
-        self.driver.find_element(By.ID, self.pageobjects.District_Status).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.District_wise_tab).click()
         time.sleep(2)
         self.driver.find_element(By.XPATH, self.pageobjects.Choose_Program).click()
         time.sleep(1)
         self.driver.find_element(By.XPATH, self.pageobjects.Nishtha_2).click()
         time.sleep(2)
-        result = self.data.selecting_the_state_dropdown_options(self.driver)
+        result = self.data.check_the_state_list_options_from_the_dropdown(self, driver=self.driver)
         if result == 0:
             pass
         else:
@@ -721,13 +720,13 @@ class Test_Nishtha_Dashboard:
             assert False
 
     def test_N3_option_with_state_list(self):
-        self.driver.find_element(By.ID, self.pageobjects.District_Status).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.District_wise_tab).click()
         time.sleep(2)
         self.driver.find_element(By.XPATH, self.pageobjects.Choose_Program).click()
         time.sleep(1)
         self.driver.find_element(By.XPATH, self.pageobjects.Nishtha_3).click()
         time.sleep(2)
-        result = self.data.selecting_the_state_dropdown_options(self.driver)
+        result = self.data.check_the_state_list_options_from_the_dropdown(self, driver=self.driver)
         if result == 0:
             pass
         else:
@@ -735,9 +734,9 @@ class Test_Nishtha_Dashboard:
             assert False
 
     def test_District_Status_a_plus_button_on_cm_status(self):
-        self.driver.find_element(By.ID, self.pageobjects.District_Status).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.District_wise_tab).click()
         time.sleep(2)
-        a_plus = self.data.test_click_on_A_plus_button(self.driver)
+        a_plus = self.data.test_click_on_A_plus_button(self, driver=self.driver)
         if a_plus == 0:
             self.logger.info("********** A+ button is working as expected ******************")
             self.driver.refresh()
@@ -749,7 +748,7 @@ class Test_Nishtha_Dashboard:
     def test_District_Status_a_minus_button_on_cm_status(self):
         self.driver.find_element(By.ID, self.pageobjects.District_Status).click()
         time.sleep(2)
-        a_minus = self.data.test_click_on_A_minus_button(self.driver)
+        a_minus = self.data.test_click_on_A_minus_button(self, driver=self.driver)
         if a_minus == 0:
             self.logger.info("********** A- button is working as expected ******************")
             self.driver.refresh()
@@ -761,7 +760,7 @@ class Test_Nishtha_Dashboard:
     def test_District_Status_a_default_button_on_cm_status(self):
         self.driver.find_element(By.ID, self.pageobjects.District_Status).click()
         time.sleep(2)
-        a_plus = self.data.test_click_on_A_default_button(self.driver)
+        a_plus = self.data.test_click_on_A_default_button(self, driver=self.driver)
         if a_plus == 0:
             self.logger.info("********** A button is working as expected ******************")
             self.driver.refresh()
@@ -772,7 +771,7 @@ class Test_Nishtha_Dashboard:
 
     # Course Wise Status
     def test_click_on_the_course_wise_tab_button(self):
-        self.driver.find_element(By.ID, self.pageobjects.Course_Status).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Course_wise_tab).click()
         time.sleep(2)
         result = self.driver.find_element(By.ID, self.pageobjects.District_Status).get_attribute('aria-selected')
         if "true" == result:
@@ -783,7 +782,7 @@ class Test_Nishtha_Dashboard:
             assert False
 
     def test_program_course_status_dropdown_options(self):
-        self.driver.find_element(By.ID, self.pageobjects.Course_Status).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Course_wise_tab).click()
         time.sleep(2)
         result = self.data.test_check_district_program_dropdown_options(self.driver)
         if result == 0:
@@ -793,7 +792,7 @@ class Test_Nishtha_Dashboard:
             assert False
 
     def test_state_course_status_dropdown_options(self):
-        self.driver.find_element(By.ID, self.pageobjects.Course_Status).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Course_wise_tab).click()
         time.sleep(2)
         result = self.data.test_check_states_dropdown_options(self.driver)
         if result == 0:
@@ -803,7 +802,7 @@ class Test_Nishtha_Dashboard:
             assert False
 
     def test_course_district_wise_select_second_option_of_program_dropdown(self):
-        self.driver.find_element(By.ID, self.pageobjects.Course_Status).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Course_wise_tab).click()
         time.sleep(2)
         result = self.data.test_check_selection_nishtha_2_options(self.driver)
         print(result)
@@ -814,7 +813,7 @@ class Test_Nishtha_Dashboard:
             assert False
 
     def test_course_course_district_wise_select_third_option_of_program_dropdown(self):
-        self.driver.find_element(By.ID, self.pageobjects.Course_Status).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Course_wise_tab).click()
         time.sleep(2)
         result = self.data.test_check_selection_nishtha_3_options(self.driver)
         print(result)
@@ -825,9 +824,9 @@ class Test_Nishtha_Dashboard:
             assert False
 
     def test_course_district_wise_select_First_option_of_program_dropdown(self):
-        self.driver.find_element(By.ID, self.pageobjects.Course_Status).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Course_wise_tab).click()
         time.sleep(2)
-        result = self.data.test_check_selection_nishtha_1_options(self.driver)
+        result = self.data.test_check_selection_nishtha_1_options(self, driver=self.driver)
         if result == 0:
             pass
         else:
@@ -835,13 +834,13 @@ class Test_Nishtha_Dashboard:
             assert False
 
     def test_course_N1_option_with_state_list(self):
-        self.driver.find_element(By.ID, self.pageobjects.Course_Status).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Course_wise_tab).click()
         time.sleep(2)
         self.driver.find_element(By.XPATH, self.pageobjects.Choose_Program).click()
         time.sleep(1)
         self.driver.find_element(By.XPATH, self.pageobjects.Nishtha_1).click()
         time.sleep(2)
-        result = self.data.selecting_the_state_dropdown_options(self.driver)
+        result = self.data.check_the_state_list_options_from_the_dropdown(self, driver=self.driver)
         if result == 0:
             pass
         else:
@@ -849,13 +848,13 @@ class Test_Nishtha_Dashboard:
             assert False
 
     def test_Course_N2_option_with_state_list(self):
-        self.driver.find_element(By.ID, self.pageobjects.Course_Status).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Course_wise_tab).click()
         time.sleep(2)
         self.driver.find_element(By.XPATH, self.pageobjects.Choose_Program).click()
         time.sleep(1)
         self.driver.find_element(By.XPATH, self.pageobjects.Nishtha_2).click()
         time.sleep(2)
-        result = self.data.selecting_the_state_dropdown_options(self.driver)
+        result = self.data.check_the_state_list_options_from_the_dropdown(self, driver=self.driver)
         if result == 0:
             pass
         else:
@@ -863,13 +862,13 @@ class Test_Nishtha_Dashboard:
             assert False
 
     def test_Course_N3_option_with_state_list(self):
-        self.driver.find_element(By.ID, self.pageobjects.Course_Status).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Course_wise_tab).click()
         time.sleep(2)
         self.driver.find_element(By.XPATH, self.pageobjects.Choose_Program).click()
         time.sleep(1)
         self.driver.find_element(By.XPATH, self.pageobjects.Nishtha_3).click()
         time.sleep(2)
-        result = self.data.selecting_the_state_dropdown_options(self.driver)
+        result = self.data.check_the_state_list_options_from_the_dropdown(self, driver=self.driver)
         if result == 0:
             pass
         else:
@@ -877,9 +876,9 @@ class Test_Nishtha_Dashboard:
             assert False
 
     def test_Course_Status_a_plus_button_on_cm_status(self):
-        self.driver.find_element(By.ID, self.pageobjects.Course_Status).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Course_wise_tab).click()
         time.sleep(2)
-        a_plus = self.data.test_click_on_A_plus_button(self.driver)
+        a_plus = self.data.test_click_on_A_plus_button(self, driver=self.driver)
         if a_plus == 0:
             self.logger.info("********** A+ button is working as expected ******************")
             self.driver.refresh()
@@ -889,9 +888,9 @@ class Test_Nishtha_Dashboard:
             assert False
 
     def test_Course_Status_a_minus_button_on_cm_status(self):
-        self.driver.find_element(By.ID, self.pageobjects.Course_Status).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Course_wise_tab).click()
         time.sleep(2)
-        a_minus = self.data.test_click_on_A_minus_button(self.driver)
+        a_minus = self.data.test_click_on_A_minus_button(self, driver=self.driver)
         if a_minus == 0:
             self.logger.info("********** A- button is working as expected ******************")
             self.driver.refresh()
@@ -901,9 +900,9 @@ class Test_Nishtha_Dashboard:
             assert False
 
     def test_Course_Status_a_default_button_on_cm_status(self):
-        self.driver.find_element(By.ID, self.pageobjects.Course_Status).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Course_wise_tab).click()
         time.sleep(2)
-        a_plus = self.data.test_click_on_A_default_button(self.driver)
+        a_plus = self.data.test_click_on_A_default_button(self, driver=self.driver)
         if a_plus == 0:
             self.logger.info("********** A button is working as expected ******************")
             self.driver.refresh()
@@ -911,4 +910,3 @@ class Test_Nishtha_Dashboard:
         else:
             self.logger.error("************** A  button is not working as expected ****************")
             assert False
-
