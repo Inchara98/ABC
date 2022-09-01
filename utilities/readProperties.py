@@ -3,6 +3,7 @@ import os
 import time
 from pathlib import Path
 from selenium import webdriver
+from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from PageObjects.Programs_Page import Program_Objects
 from get_directory import DirectoryPath
@@ -96,41 +97,14 @@ class ReadConfig:
         return driver
 
     @staticmethod
-    def navigate_to_Diksha():
-        p = DirectoryPath()
-        pageobjects = Program_Objects()
-        data = ReadConfig()
-        driver = webdriver.Chrome(executable_path=p.get_driver_path())
-        driver.maximize_window()
-        driver.get(data.getApplicationURL())
-        driver.implicitly_wait(30)
-        time.sleep(3)
-        driver.find_element(By.ID, pageobjects.Diksha).click()
-        time.sleep(3)
-        return driver
-
-    @staticmethod
-    def navigate_to_Micro_improvements():
-        p = DirectoryPath()
-        pageobjects = Program_Objects()
-        data = ReadConfig()
-        driver = webdriver.Chrome(executable_path=p.get_driver_path())
-        driver.maximize_window()
-        driver.get(data.getApplicationURL())
-        driver.implicitly_wait(30)
-        time.sleep(3)
-        driver.find_element(By.ID, pageobjects.Micro_improvements).click()
-        time.sleep(3)
-        return driver
-
-    @staticmethod
-    def test_click_on_A_default_button(self):
+    def test_click_on_A_default_button(self, driver):
         count = 0
         a_plus = self.driver.find_element(By.ID, self.pageobjects.a_default)
         a_plus.click()
         time.sleep(2)
         if 'style="font-size: 16px;"' in self.driver.page_source:
             self.logger.info("************* A button is clicked *************")
+            self.driver.refresh()
             assert True
         else:
             self.logger.error("************** A button is not clicked *******************")
@@ -138,13 +112,14 @@ class ReadConfig:
         return count
 
     @staticmethod
-    def test_click_on_A_plus_button(self):
+    def test_click_on_A_plus_button(self, driver):
         count = 0
         a_plus = self.driver.find_element(By.ID, self.pageobjects.a_plus)
         a_plus.click()
         time.sleep(2)
         if 'style="font-size: 18px;"' in self.driver.page_source:
             self.logger.info("************* A+ button is clicked *************")
+            self.driver.refresh()
             assert True
         else:
             self.logger.error("************** A+ button is not clicked *******************")
@@ -152,13 +127,14 @@ class ReadConfig:
         return count
 
     @staticmethod
-    def test_click_on_A_minus_button(self):
+    def test_click_on_A_minus_button(self, driver):
         count = 0
         a_plus = self.driver.find_element(By.ID, self.pageobjects.a_minus)
         a_plus.click()
         time.sleep(2)
-        if 'style="font-size: 16px;"' in self.driver.page_source:
+        if 'style="font-size: 14px;"' in self.driver.page_source:
             self.logger.info("************* A- button is clicked *************")
+            self.driver.refresh()
             assert True
         else:
             self.logger.error("************** A- button is not clicked *******************")
@@ -195,7 +171,7 @@ class ReadConfig:
         return count
 
     @staticmethod
-    def test_check_selection_nishtha_1_options(self):
+    def test_check_selection_nishtha_1_options(self,driver):
         count = 0
         self.driver.find_element(By.XPATH, self.pageobjects.Choose_Program).click()
         time.sleep(1)
@@ -340,92 +316,22 @@ class ReadConfig:
         return count
 
     @staticmethod
-    def test_check_micro_improvements_dropdown_options(self):
-        self.driver.find_element(By.XPATH, self.pageobjects.Choose_metrics).click()
-        time.sleep(1)
-        count = 0
-        options = self.driver.find_elements(By.XPATH, self.pageobjects.dropdown_option)
-        if len(options) > 0:
-            self.logger.info("************** Program Dropdown Showing Options *******************")
-            assert True
-        else:
-            self.logger.error("****************** Program Dropdown is Empty... *************************")
-            count = count + 1
-        return count
-
-    @staticmethod
-    def test_check_selection_Total_micro_improvements_options(self):
-        count = 0
-        self.driver.find_element(By.XPATH, self.pageobjects.Choose_metrics).click()
-        time.sleep(1)
-        self.driver.find_element(By.XPATH, self.pageobjects.Total_micro_improvements).click()
+    def get_map_tooltip_info_validation(self,driver):
+        driver.implicitly_wait(30)
+        lst = self.driver.find_elements(By.CLASS_NAME, "leaflet-interactive")
+        print("No of States", len(lst) - 1)
+        blue_marks = 0
+        white_marks = 0
         time.sleep(2)
-        if "Total_micro_improvements " in self.driver.page_source:
-            self.logger.info("************* Total_micro_improvements option is selected  ****************")
-            assert True
-        else:
-            self.logger.error("************** Total_micro_improvements option is not selected *****************")
-            count = count + 1
-        return count
-
-    @staticmethod
-    def test_check_selection_micro_improvements_started_options(self):
-        count = 0
-        self.driver.find_element(By.XPATH, self.pageobjects.Choose_metrics).click()
-        time.sleep(1)
-        self.driver.find_element(By.XPATH, self.pageobjects.micro_improvements_started).click()
-        time.sleep(2)
-        if "micro_improvements_started " in self.driver.page_source:
-            self.logger.info("************* micro_improvements_started option is selected  ****************")
-            assert True
-        else:
-            self.logger.error("************** micro_improvements_started option is not selected *****************")
-            count = count + 1
-        return count
-
-    @staticmethod
-    def test_check_selection_micro_improvements_in_progress_options(self):
-        count = 0
-        self.driver.find_element(By.XPATH, self.pageobjects.Choose_metrics).click()
-        time.sleep(1)
-        self.driver.find_element(By.XPATH, self.pageobjects.micro_improvements_in_progress).click()
-        time.sleep(2)
-        if "micro_improvements_in_progress " in self.driver.page_source:
-            self.logger.info("************* micro_improvements_in_progress option is selected  ****************")
-            assert True
-        else:
-            self.logger.error("************** micro_improvements_in_progress option is not selected *****************")
-            count = count + 1
-        return count
-
-    @staticmethod
-    def test_check_selection_micro_improvements_submitted_options(self):
-        count = 0
-        self.driver.find_element(By.XPATH, self.pageobjects.Choose_metrics).click()
-        time.sleep(1)
-        self.driver.find_element(By.XPATH, self.pageobjects.micro_improvements_submitted).click()
-        time.sleep(2)
-        if "micro_improvements_submitted " in self.driver.page_source:
-            self.logger.info("************* micro_improvements_submitted option is selected  ****************")
-            assert True
-        else:
-            self.logger.error("************** micro_improvements_submitted option is not selected *****************")
-            count = count + 1
-        return count
-
-    @staticmethod
-    def test_check_selection_micro_improvements_submitted_with_evidence_options(self):
-        count = 0
-        self.driver.find_element(By.XPATH, self.pageobjects.Choose_metrics).click()
-        time.sleep(1)
-        self.driver.find_element(By.XPATH, self.pageobjects.micro_improvements_submitted_with_evidence).click()
-        time.sleep(2)
-        if "micro_improvements_submitted_with_evidence " in self.driver.page_source:
-            self.logger.info("************* micro_improvements_submitted_with_evidence option is selected  ****************")
-            assert True
-        else:
-            self.logger.error("************** micro_improvements_submitted_with_evidence option is not selected *****************")
-            count = count + 1
-        return count
-
-
+        map_data = []
+        for x in range(1, len(lst)):
+            if lst[x].get_attribute('fill') == '#FFFFFF':
+                white_marks = white_marks + 1
+            else:
+                blue_marks = blue_marks + 1
+            act = ActionChains(self.driver)
+            act.move_to_element(lst[x]).perform()
+            act.pause(4)
+            txt = self.driver.find_element(By.XPATH, "//div[@class='leaflet-pane leaflet-tooltip-pane']")
+            map_data.append(txt.text)
+        return map_data

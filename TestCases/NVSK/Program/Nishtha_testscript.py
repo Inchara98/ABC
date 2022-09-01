@@ -153,8 +153,7 @@ class Test_Nishtha_Dashboard:
     def test_select_second_option_of_program_dropdown(self):
         # self.driver.find_element(By.ID, self.pageobjects.Implementation_Status).click()
         time.sleep(2)
-        result = self.data.test_check_selection_nishtha_2_options(self.driver)
-        print(result)
+        result = self.data.test_check_selection_nishtha_2_options(self, driver=self.driver)
         if result == 0:
             pass
         else:
@@ -164,7 +163,7 @@ class Test_Nishtha_Dashboard:
     def test_select_third_option_of_program_dropdown(self):
         # self.driver.find_element(By.ID, self.pageobjects.Implementation_Status).click()
         time.sleep(2)
-        result = self.data.test_check_selection_nishtha_3_options(self.driver)
+        result = self.data.test_check_selection_nishtha_3_options(self, driver=self.driver)
         print(result)
         if result == 0:
             pass
@@ -175,18 +174,12 @@ class Test_Nishtha_Dashboard:
     def test_select_First_option_of_program_dropdown(self):
         self.driver.find_element(By.XPATH, self.pageobjects.Implementation_Status_tab).click()
         time.sleep(2)
-        result = self.data.test_check_selection_nishtha_1_options(self,driver =self.driver)
-        print(result)
+        result = self.data.test_check_selection_nishtha_1_options(self, driver=self.driver)
         if result == 0:
             pass
         else:
             self.logger.error("*********** NISHTHA 1.0 Option is not Selected **********")
             assert False
-        res2 = self.data.get_map_tooltip_info_validation(self, driver=self.driver)
-        if "NISHTHA 1.0" in res2[0]:
-            pass
-        else:
-            self.logger.error("Selected Option is not showing in the map tooltip. ")
 
     def test_Implementation_Status_a_plus_button_on_cm_status(self):
         self.driver.find_element(By.ID, self.pageobjects.Implementation_Status).click()
@@ -435,11 +428,18 @@ class Test_Nishtha_Dashboard:
 
     def test_check_state_table_values(self):
         state_tablevals = []
-        self.driver.find_element(By.ID, self.pageobjects.CM_status).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Course_medium_tab).click()
+        time.sleep(4)
         state_name = self.driver.find_elements(By.XPATH, self.pageobjects.state_values)
         for i in range(1, len(state_name)):
             state_list = self.driver.find_element(By.XPATH, "//div/table/tbody/tr[" + str(i) + "]/td[1]")
             state_tablevals.append(state_list.text)
+        for j in range(len(state_tablevals)):
+            st_name = state_tablevals[j]
+            if st_name != st_name.lower() and st_name != st_name.upper() and "_" not in st_name:
+                self.logger.info("************ State Names are In Camel Cases *****************")
+            else:
+                self.logger.error("**************** State Name are not in Camel Cases ")
         if len(state_tablevals) == len(state_name) - 1:
             self.logger.info("************ State Table values are showing ****************")
             assert True
@@ -683,9 +683,9 @@ class Test_Nishtha_Dashboard:
             assert False
 
     def test_overall_program_with_all_the_states(self):
-        self.driver.find_element(By.ID, self.pageobjects.District_Status).click()
-        time.sleep(2)
-        result = self.data.selecting_the_state_dropdown_options(self.driver)
+        self.driver.find_element(By.XPATH, self.pageobjects.District_wise_tab).click()
+        time.sleep(3)
+        result = self.data.check_the_state_list_options_from_the_dropdown(self, driver=self.driver)
         if result == 0:
             pass
         else:
@@ -693,13 +693,13 @@ class Test_Nishtha_Dashboard:
             assert False
 
     def test_N1_option_with_state_list(self):
-        self.driver.find_element(By.ID, self.pageobjects.District_Status).click()
-        time.sleep(2)
+        self.driver.find_element(By.XPATH, self.pageobjects.District_wise_tab).click()
+        time.sleep(3)
         self.driver.find_element(By.XPATH, self.pageobjects.Choose_Program).click()
-        time.sleep(1)
-        self.driver.find_element(By.XPATH, self.pageobjects.Nishtha_1).click()
         time.sleep(2)
-        result = self.data.selecting_the_state_dropdown_options(self.driver)
+        self.driver.find_element(By.XPATH, self.pageobjects.Nishtha_1).click()
+        time.sleep(3)
+        result = self.data.check_the_state_list_options_from_the_dropdown(self, driver=self.driver)
         if result == 0:
             pass
         else:
