@@ -110,6 +110,20 @@ class ReadConfig:
         return driver
 
     @staticmethod
+    def navigate_to_Micro_improvements():
+        p = DirectoryPath()
+        pageobjects = Program_Objects()
+        data = ReadConfig()
+        driver = webdriver.Chrome(executable_path=p.get_driver_path())
+        driver.maximize_window()
+        driver.get(data.getApplicationURL())
+        driver.implicitly_wait(30)
+        time.sleep(3)
+        driver.find_element(By.ID, pageobjects.Micro_improvements).click()
+        time.sleep(3)
+        return driver
+
+    @staticmethod
     def test_click_on_A_default_button(self):
         count = 0
         a_plus = self.driver.find_element(By.ID, self.pageobjects.a_default)
@@ -324,3 +338,94 @@ class ReadConfig:
                 self.logger.error("**************** State Name Options are not Selected ********************")
                 count = count + 1
         return count
+
+    @staticmethod
+    def test_check_micro_improvements_dropdown_options(self):
+        self.driver.find_element(By.XPATH, self.pageobjects.Choose_metrics).click()
+        time.sleep(1)
+        count = 0
+        options = self.driver.find_elements(By.XPATH, self.pageobjects.dropdown_option)
+        if len(options) > 0:
+            self.logger.info("************** Program Dropdown Showing Options *******************")
+            assert True
+        else:
+            self.logger.error("****************** Program Dropdown is Empty... *************************")
+            count = count + 1
+        return count
+
+    @staticmethod
+    def test_check_selection_Total_micro_improvements_options(self):
+        count = 0
+        self.driver.find_element(By.XPATH, self.pageobjects.Choose_metrics).click()
+        time.sleep(1)
+        self.driver.find_element(By.XPATH, self.pageobjects.Total_micro_improvements).click()
+        time.sleep(2)
+        if "Total_micro_improvements " in self.driver.page_source:
+            self.logger.info("************* Total_micro_improvements option is selected  ****************")
+            assert True
+        else:
+            self.logger.error("************** Total_micro_improvements option is not selected *****************")
+            count = count + 1
+        return count
+
+    @staticmethod
+    def test_check_selection_micro_improvements_started_options(self):
+        count = 0
+        self.driver.find_element(By.XPATH, self.pageobjects.Choose_metrics).click()
+        time.sleep(1)
+        self.driver.find_element(By.XPATH, self.pageobjects.micro_improvements_started).click()
+        time.sleep(2)
+        if "micro_improvements_started " in self.driver.page_source:
+            self.logger.info("************* micro_improvements_started option is selected  ****************")
+            assert True
+        else:
+            self.logger.error("************** micro_improvements_started option is not selected *****************")
+            count = count + 1
+        return count
+
+    @staticmethod
+    def test_check_selection_micro_improvements_in_progress_options(self):
+        count = 0
+        self.driver.find_element(By.XPATH, self.pageobjects.Choose_metrics).click()
+        time.sleep(1)
+        self.driver.find_element(By.XPATH, self.pageobjects.micro_improvements_in_progress).click()
+        time.sleep(2)
+        if "micro_improvements_in_progress " in self.driver.page_source:
+            self.logger.info("************* micro_improvements_in_progress option is selected  ****************")
+            assert True
+        else:
+            self.logger.error("************** micro_improvements_in_progress option is not selected *****************")
+            count = count + 1
+        return count
+
+    @staticmethod
+    def test_check_selection_micro_improvements_submitted_options(self):
+        count = 0
+        self.driver.find_element(By.XPATH, self.pageobjects.Choose_metrics).click()
+        time.sleep(1)
+        self.driver.find_element(By.XPATH, self.pageobjects.micro_improvements_submitted).click()
+        time.sleep(2)
+        if "micro_improvements_submitted " in self.driver.page_source:
+            self.logger.info("************* micro_improvements_submitted option is selected  ****************")
+            assert True
+        else:
+            self.logger.error("************** micro_improvements_submitted option is not selected *****************")
+            count = count + 1
+        return count
+
+    @staticmethod
+    def test_check_selection_micro_improvements_submitted_with_evidence_options(self):
+        count = 0
+        self.driver.find_element(By.XPATH, self.pageobjects.Choose_metrics).click()
+        time.sleep(1)
+        self.driver.find_element(By.XPATH, self.pageobjects.micro_improvements_submitted_with_evidence).click()
+        time.sleep(2)
+        if "micro_improvements_submitted_with_evidence " in self.driver.page_source:
+            self.logger.info("************* micro_improvements_submitted_with_evidence option is selected  ****************")
+            assert True
+        else:
+            self.logger.error("************** micro_improvements_submitted_with_evidence option is not selected *****************")
+            count = count + 1
+        return count
+
+
