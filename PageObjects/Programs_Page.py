@@ -119,9 +119,9 @@ class Program_Objects:
     Total_time_spent = "//app-digital-learning/div[1]/div/div[5]/sb-cqube-info-card/div/div/span[1]"
     Total_time_spent_text = "//app-digital-learning/div[1]/div/div[5]/sb-cqube-info-card/div/div/span[2]"
 
-    Implementation_Status_tab = "//app-digital-learning/div[2]/mat-tab-group/mat-tab-header/div/div/div/div[1]"
+    Implementation_Status_tab = "//*[contains(text(),'Implementation Status')]//ancestor::div[1]"
 
-    ETB_Coverage_Tab = "//*[contains(text(),'ETB Coverage Status')]"
+    ETB_Coverage_Tab = "//*[contains(text(),'ETB Coverage Status')]//ancestor::div[1]"
     State_column = "//th[@role='columnheader'][1]"
     Curiculum_Textbook_column = "//th[@role='columnheader'][2]"
     Energised_Textbook_column = "//th[@role='columnheader'][3]"
@@ -131,7 +131,8 @@ class Program_Objects:
     Energised_Textbook_header = "//div[contains(text(),'Total Energized Textbooks')]"
     per_Energised_Textbook_header = "//div[contains(text(),'% Energized Textbooks')]"
 
-    Content_Coverage_Tab = "//app-digital-learning/div[2]/mat-tab-group/mat-tab-header/div/div/div/div[3]"
+    Content_Coverage_Tab = "//*[contains(text(),'Content Coverage on QR')]//ancestor::div[1]"
 
-    Learning_session_potential_tab = "//*[contains(text(),'Learning Sessions on Potential Users')]"
+    Learning_session_potential_tab = "//*[contains(text(),'Learning Sessions on Potential Users')]//ancestor::div[1]"
 
+    Learning_session_tab = "//*[contains(text(),'Learning Sessions')]//ancestor::div[1]"

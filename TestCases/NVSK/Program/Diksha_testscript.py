@@ -127,9 +127,10 @@ class Test_Diksha_Dashboard:
     # Implementation Status
     def test_click_on_the_implementation_tab_button(self):
         # self.driver.find_element(By.ID, self.pageobjects.Implementation_Status).click()
-        time.sleep(2)
-        result = self.driver.find_element(By.ID, self.pageobjects.Implementation_Status_tab).get_attribute(
+        time.sleep(5)
+        result = self.driver.find_element(By.XPATH, self.pageobjects.Implementation_Status_tab).get_attribute(
             'aria-selected')
+        print(result)
         if "true" == result:
             self.logger.info("************* Implementation Status Tab is Clicked *************")
             assert True
@@ -138,9 +139,9 @@ class Test_Diksha_Dashboard:
             assert False
 
     def test_Implementation_Status_a_plus_button(self):
-        self.driver.find_element(By.ID, self.pageobjects.Implementation_Status_tab).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Implementation_Status_tab).click()
         time.sleep(2)
-        a_plus = self.data.test_click_on_A_plus_button(self.driver)
+        a_plus = self.data.test_click_on_A_plus_button(self)
         if a_plus == 0:
             self.logger.info("********** A+ button is working as expected ******************")
             self.driver.refresh()
@@ -150,9 +151,9 @@ class Test_Diksha_Dashboard:
             assert False
 
     def test_Implementation_Status_a_minus_button(self):
-        self.driver.find_element(By.ID, self.pageobjects.Implementation_Status_tab).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Implementation_Status_tab).click()
         time.sleep(2)
-        a_minus = self.data.test_click_on_A_minus_button(self.driver)
+        a_minus = self.data.test_click_on_A_minus_button(self)
         if a_minus == 0:
             self.logger.info("********** A- button is working as expected ******************")
             self.driver.refresh()
@@ -162,9 +163,9 @@ class Test_Diksha_Dashboard:
             assert False
 
     def test_Implementation_Status_a_default_button(self):
-        self.driver.find_element(By.ID, self.pageobjects.Implementation_Status_tab).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Implementation_Status_tab).click()
         time.sleep(2)
-        a_plus = self.data.test_click_on_A_default_button(self.driver)
+        a_plus = self.data.test_click_on_A_default_button(self)
         if a_plus == 0:
             self.logger.info("********** A button is working as expected ******************")
             self.driver.refresh()
@@ -176,7 +177,8 @@ class Test_Diksha_Dashboard:
     # ETB coverage status
     def test_click_on_the_ETB_Coverage_tab_button(self):
         time.sleep(2)
-        result = self.driver.find_element(By.ID, self.pageobjects.ETB_Coverage_Tab).get_attribute(
+        self.driver.find_element(By.XPATH, self.pageobjects.ETB_Coverage_Tab).click()
+        result = self.driver.find_element(By.XPATH, self.pageobjects.ETB_Coverage_Tab).get_attribute(
             'aria-selected')
         if "true" == result:
             self.logger.info("************* Implementation Status Tab is Clicked *************")
@@ -188,8 +190,8 @@ class Test_Diksha_Dashboard:
     def test_check_table_state_headers_clickable(self):
         self.logger.info("**************Clicking table headers *****************")
         self.driver.find_element(By.ID, self.pageobjects.Diksha).click()
-        time.sleep(5)
-        self.driver.find_element(By.ID, self.pageobjects.ETB_Coverage_Tab).click()
+        time.sleep(10)
+        self.driver.find_element(By.XPATH, self.pageobjects.ETB_Coverage_Tab).click()
         time.sleep(3)
         status = self.driver.find_element(By.XPATH, self.pageobjects.State_column).get_attribute('aria-sort')
 
@@ -216,7 +218,7 @@ class Test_Diksha_Dashboard:
         self.logger.info("**************Clicking table headers *****************")
         self.driver.find_element(By.ID, self.pageobjects.Diksha).click()
         time.sleep(5)
-        self.driver.find_element(By.ID, self.pageobjects.ETB_Coverage_Tab).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.ETB_Coverage_Tab).click()
         time.sleep(3)
         status = self.driver.find_element(By.XPATH, self.pageobjects.Curiculum_Textbook_column).get_attribute(
             'aria-sort')
@@ -244,7 +246,7 @@ class Test_Diksha_Dashboard:
         self.logger.info("**************Clicking table headers *****************")
         self.driver.find_element(By.ID, self.pageobjects.Diksha).click()
         time.sleep(5)
-        self.driver.find_element(By.ID, self.pageobjects.ETB_Coverage_Tab).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.ETB_Coverage_Tab).click()
         time.sleep(3)
         status = self.driver.find_element(By.XPATH, self.pageobjects.Energised_Textbook_column).get_attribute(
             'aria-sort')
@@ -272,7 +274,7 @@ class Test_Diksha_Dashboard:
         self.logger.info("**************Clicking table headers *****************")
         self.driver.find_element(By.ID, self.pageobjects.Diksha).click()
         time.sleep(5)
-        self.driver.find_element(By.ID, self.pageobjects.ETB_Coverage_Tab).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.ETB_Coverage_Tab).click()
         time.sleep(3)
         status = self.driver.find_element(By.XPATH, self.pageobjects.per_Energised_Textbook_column).get_attribute(
             'aria-sort')
@@ -298,9 +300,9 @@ class Test_Diksha_Dashboard:
             assert False
 
     def test_ETB_Coverage_a_plus_button(self):
-        self.driver.find_element(By.ID, self.pageobjects.ETB_Coverage_Tab).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.ETB_Coverage_Tab).click()
         time.sleep(2)
-        a_plus = self.data.test_click_on_A_plus_button(self.driver)
+        a_plus = self.data.test_click_on_A_plus_button(self)
         if a_plus == 0:
             self.logger.info("********** A+ button is working as expected ******************")
             self.driver.refresh()
@@ -310,9 +312,9 @@ class Test_Diksha_Dashboard:
             assert False
 
     def test_ETB_Coverage_a_minus_button(self):
-        self.driver.find_element(By.ID, self.pageobjects.ETB_Coverage_Tab).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.ETB_Coverage_Tab).click()
         time.sleep(2)
-        a_minus = self.data.test_click_on_A_minus_button(self.driver)
+        a_minus = self.data.test_click_on_A_minus_button(self)
         if a_minus == 0:
             self.logger.info("********** A- button is working as expected ******************")
             self.driver.refresh()
@@ -322,9 +324,9 @@ class Test_Diksha_Dashboard:
             assert False
 
     def test_ETB_Coverage_a_default_button(self):
-        self.driver.find_element(By.ID, self.pageobjects.ETB_Coverage_Tab).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.ETB_Coverage_Tab).click()
         time.sleep(2)
-        a_plus = self.data.test_click_on_A_default_button(self.driver)
+        a_plus = self.data.test_click_on_A_default_button(self)
         if a_plus == 0:
             self.logger.info("********** A button is working as expected ******************")
             self.driver.refresh()
@@ -335,8 +337,11 @@ class Test_Diksha_Dashboard:
 
     # Content Coverage On QR
     def test_click_on_the_Content_Coverage_tab_button(self):
+        self.driver.find_element(By.XPATH
+                                 , self.pageobjects.Content_Coverage_Tab).click()
         time.sleep(2)
-        result = self.driver.find_element(By.ID, self.pageobjects.Content_Coverage_Tab).get_attribute(
+        result = self.driver.find_element(By.XPATH
+                                          , self.pageobjects.Content_Coverage_Tab).get_attribute(
             'aria-selected')
         if "true" == result:
             self.logger.info("************* Content Coverage Tab is Clicked *************")
@@ -346,9 +351,9 @@ class Test_Diksha_Dashboard:
             assert False
 
     def test_Content_Coverage_a_plus_button(self):
-        self.driver.find_element(By.ID, self.pageobjects.Content_Coverage_Tab).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Content_Coverage_Tab).click()
         time.sleep(2)
-        a_plus = self.data.test_click_on_A_plus_button(self.driver)
+        a_plus = self.data.test_click_on_A_plus_button(self)
         if a_plus == 0:
             self.logger.info("********** A+ button is working as expected ******************")
             self.driver.refresh()
@@ -358,9 +363,9 @@ class Test_Diksha_Dashboard:
             assert False
 
     def test_Content_Coverage_a_minus_button(self):
-        self.driver.find_element(By.ID, self.pageobjects.Content_Coverage_Tab).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Content_Coverage_Tab).click()
         time.sleep(2)
-        a_minus = self.data.test_click_on_A_minus_button(self.driver)
+        a_minus = self.data.test_click_on_A_minus_button(self)
         if a_minus == 0:
             self.logger.info("********** A- button is working as expected ******************")
             self.driver.refresh()
@@ -370,9 +375,9 @@ class Test_Diksha_Dashboard:
             assert False
 
     def test_Content_Coverage_a_default_button(self):
-        self.driver.find_element(By.ID, self.pageobjects.Content_Coverage_Tab).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Content_Coverage_Tab).click()
         time.sleep(2)
-        a_plus = self.data.test_click_on_A_default_button(self.driver)
+        a_plus = self.data.test_click_on_A_default_button(self)
         if a_plus == 0:
             self.logger.info("********** A button is working as expected ******************")
             self.driver.refresh()
@@ -463,7 +468,7 @@ class Test_Diksha_Dashboard:
         print(d)
         for j in range(1, len(d)):
             s = d[j]
-            if int(s) >= 0:
+            if float(s) >= 0:
                 print(s, 'Not less than 0')
             else:
                 print(s, 'less than 0')
@@ -473,11 +478,60 @@ class Test_Diksha_Dashboard:
         else:
             assert False
 
-
-    #Learning session on potential users
-    def test_click_on_the_Learning_session_potential_tab_button(self):
+    # Learning Session
+    def test_click_on_the_Learning_session_tab_button(self):
+        self.driver.find_element(By.XPATH, self.pageobjects.Learning_session_potential_tab).click()
         time.sleep(2)
-        result = self.driver.find_element(By.ID, self.pageobjects.Learning_session_potential_tab).get_attribute(
+        result = self.driver.find_element(By.XPATH, self.pageobjects.Learning_session_potential_tab).get_attribute(
+            'aria-selected')
+        if "true" == result:
+            self.logger.info("************* Learning session Potential Tab is Clicked *************")
+            assert True
+        else:
+            self.logger.error("**************** Learning session Potential is not clicked *********************")
+            assert False
+
+    def test_Learning_session_a_plus_button(self):
+        self.driver.find_element(By.XPATH, self.pageobjects.Learning_session_potential_tab).click()
+        time.sleep(2)
+        a_plus = self.data.test_click_on_A_plus_button(self)
+        if a_plus == 0:
+            self.logger.info("********** A+ button is working as expected ******************")
+            self.driver.refresh()
+            assert True
+        else:
+            self.logger.error("************** A+ button is not working as expected ****************")
+            assert False
+
+    def test_Learning_session_a_minus_button(self):
+        self.driver.find_element(By.XPATH, self.pageobjects.Learning_session_potential_tab).click()
+        time.sleep(2)
+        a_minus = self.data.test_click_on_A_minus_button(self)
+        if a_minus == 0:
+            self.logger.info("********** A- button is working as expected ******************")
+            self.driver.refresh()
+            assert True
+        else:
+            self.logger.error("************** A- button is not working as expected ****************")
+            assert False
+
+    def test_Learning_session_a_default_button(self):
+        self.driver.find_element(By.XPATH, self.pageobjects.Learning_session_potential_tab).click()
+        time.sleep(2)
+        a_plus = self.data.test_click_on_A_default_button(self)
+        if a_plus == 0:
+            self.logger.info("********** A button is working as expected ******************")
+            self.driver.refresh()
+            assert True
+        else:
+            self.logger.error("************** A  button is not working as expected ****************")
+            assert False
+
+    # Learning session on potential users
+    def test_click_on_the_Learning_session_potential_tab_button(self):
+        self.driver.find_element(By.XPATH, self.pageobjects.Learning_session_potential_tab).click()
+        time.sleep(2)
+        result = self.driver.find_element(By.XPATH, self.pageobjects.Learning_session_potential_tab).get_attribute(
             'aria-selected')
         if "true" == result:
             self.logger.info("************* Learning session Potential Tab is Clicked *************")
@@ -487,9 +541,9 @@ class Test_Diksha_Dashboard:
             assert False
 
     def test_Learning_session_Potential_user_a_plus_button(self):
-        self.driver.find_element(By.ID, self.pageobjects.Learning_session_potential_tab).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Learning_session_potential_tab).click()
         time.sleep(2)
-        a_plus = self.data.test_click_on_A_plus_button(self.driver)
+        a_plus = self.data.test_click_on_A_plus_button(self)
         if a_plus == 0:
             self.logger.info("********** A+ button is working as expected ******************")
             self.driver.refresh()
@@ -499,9 +553,9 @@ class Test_Diksha_Dashboard:
             assert False
 
     def test_Learning_session_Potential_user_a_minus_button(self):
-        self.driver.find_element(By.ID, self.pageobjects.Learning_session_potential_tab).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Learning_session_potential_tab).click()
         time.sleep(2)
-        a_minus = self.data.test_click_on_A_minus_button(self.driver)
+        a_minus = self.data.test_click_on_A_minus_button(self)
         if a_minus == 0:
             self.logger.info("********** A- button is working as expected ******************")
             self.driver.refresh()
@@ -511,9 +565,9 @@ class Test_Diksha_Dashboard:
             assert False
 
     def test_Learning_session_Potential_user_a_default_button(self):
-        self.driver.find_element(By.ID, self.pageobjects.Learning_session_potential_tab).click()
+        self.driver.find_element(By.XPATH, self.pageobjects.Learning_session_potential_tab).click()
         time.sleep(2)
-        a_plus = self.data.test_click_on_A_default_button(self.driver)
+        a_plus = self.data.test_click_on_A_default_button(self)
         if a_plus == 0:
             self.logger.info("********** A button is working as expected ******************")
             self.driver.refresh()
