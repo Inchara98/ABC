@@ -156,7 +156,7 @@ class ReadConfig:
         return count
 
     @staticmethod
-    def test_check_selection_nishtha_2_options(self,driver):
+    def test_check_selection_nishtha_2_options(self, driver):
         count = 0
         self.driver.find_element(By.XPATH, self.pageobjects.Choose_Program).click()
         time.sleep(1)
@@ -189,7 +189,7 @@ class ReadConfig:
         return count
 
     @staticmethod
-    def test_check_selection_nishtha_1_options(self,driver):
+    def test_check_selection_nishtha_1_options(self, driver):
         count = 0
         map_data = []
         self.driver.find_element(By.XPATH, self.pageobjects.Choose_Program).click()
@@ -224,11 +224,10 @@ class ReadConfig:
         else:
             print("NISHTHA 1.0 IS NOT PRESENT ")
             count = count + 1
-
         return count
 
     @staticmethod
-    def test_check_selection_nishtha_3_options(self,driver):
+    def test_check_selection_nishtha_3_options(self, driver):
         count = 0
         self.driver.find_element(By.XPATH, self.pageobjects.Choose_Program).click()
         time.sleep(2)
@@ -374,7 +373,7 @@ class ReadConfig:
         return count
 
     @staticmethod
-    def get_map_tooltip_info_validation(self,driver):
+    def get_map_tooltip_info_validation(self, driver):
         driver.implicitly_wait(30)
         lst = self.driver.find_elements(By.CLASS_NAME, "leaflet-interactive")
         print("No of States", len(lst) - 1)
@@ -393,3 +392,44 @@ class ReadConfig:
             txt = self.driver.find_element(By.XPATH, "//div[@class='leaflet-pane leaflet-tooltip-pane']")
             map_data.append(txt.text)
         return map_data
+
+    @staticmethod
+    def get_stacked_bar_tooltip_validation(self, driver):
+        count = 0
+        values = self.driver.find_elements(By.CSS_SELECTOR, 'tspan.highcharts-text-outline')
+        lst = self.driver.find_elements(By.CSS_SELECTOR, "rect.highcharts-point")
+        stateList = []
+        for x in range(1, round(len(lst) / 2)):
+            act = ActionChains(driver)
+            act.move_to_element(lst[x]).perform()
+            act.pause(5)
+            time.sleep(2)
+            state_names = self.driver.find_element(By.XPATH, "//*[@class='highcharts-label highcharts-tooltip "
+                                                             "highcharts-color-undefined']/*/*[1]")
+            stateList.append(state_names.text)
+        for j in range(len(stateList)):
+            st_name = stateList[j]
+            if st_name != st_name.lower() and st_name != st_name.upper() and "_" not in st_name:
+                print(st_name, "State Name Options are present and displayed on UI")
+            else:
+                print(st_name, type(st_name), 'is not in camel case')
+                count = count + 1
+        return count
+
+    @staticmethod
+    def check_the_state_list_options_from_the_dropdown(self, driver):
+        count = 0
+        data = ReadConfig()
+        self.pageobjects = Program_Objects()
+        self.driver.find_element(By.XPATH, self.pageobjects.choose_states).click()
+        time.sleep(3)
+        # state_options = self.driver.find_elements(By.CLASS_NAME, "ng-option-label ng-star-inserted")
+        for i in range(1, 10):
+            state_ids = self.driver.find_element(By.XPATH, "//div[starts-with(@id,'a')][" + str(i) + "]")
+            state_ids.click()
+            state_name = self.driver.find_element(By.XPATH, "//div[starts-with(@id,'a')][" + str(i) + "]/span")
+            print(state_name.text, ' is selected')
+            time.sleep(4)
+            self.driver.find_element(By.XPATH, self.pageobjects.choose_states).click()
+            time.sleep(4)
+        return count

@@ -682,9 +682,9 @@ class Test_Nishtha_Dashboard:
             assert False
 
     def test_overall_program_with_all_the_states(self):
-        self.driver.find_element(By.ID, self.pageobjects.District_Status).click()
-        time.sleep(2)
-        result = self.data.selecting_the_state_dropdown_options(self.driver)
+        self.driver.find_element(By.XPATH, self.pageobjects.District_wise_tab).click()
+        time.sleep(3)
+        result = self.data.check_the_state_list_options_from_the_dropdown(self, driver=self.driver)
         if result == 0:
             pass
         else:
@@ -692,13 +692,13 @@ class Test_Nishtha_Dashboard:
             assert False
 
     def test_N1_option_with_state_list(self):
-        self.driver.find_element(By.ID, self.pageobjects.District_Status).click()
-        time.sleep(2)
+        self.driver.find_element(By.XPATH, self.pageobjects.District_wise_tab).click()
+        time.sleep(3)
         self.driver.find_element(By.XPATH, self.pageobjects.Choose_Program).click()
-        time.sleep(1)
-        self.driver.find_element(By.XPATH, self.pageobjects.Nishtha_1).click()
         time.sleep(2)
-        result = self.data.selecting_the_state_dropdown_options(self.driver)
+        self.driver.find_element(By.XPATH, self.pageobjects.Nishtha_1).click()
+        time.sleep(3)
+        result = self.data.check_the_state_list_options_from_the_dropdown(self, driver=self.driver)
         if result == 0:
             pass
         else:

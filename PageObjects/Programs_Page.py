@@ -10,6 +10,7 @@ class Program_Objects:
     Implementation_Status_tab = "//*[contains(text(),'Implementation Status')]"
     Course_medium_tab = "//*[contains(text(),'Courses and Mediums status')]"
     Potential_Base_tab = "//*[contains(text(),'% against Potential Base')]"
+    District_wise_tab = "//*[contains(text(),'District wise Status')]"
     Course_wise_tab = "//*[contains(text(),'Course wise Status ')]"
 
     total_state = "//app-nishtha/div[1]/div/div[1]/sb-cqube-info-card/div/div/span[1]"
@@ -40,6 +41,7 @@ class Program_Objects:
     CM_status = "mat-tab-label-0-1"
     dropdown_options = "//div[@role='option']/span"
     Choose_Program = "//div[@role='combobox']/input"
+    choose_states = "//*[@id='filter-State/UT']/div/div/div[3]/input"
     Nishtha_1 = "//div[@role='option']/span[contains(text(),'NISHTHA 1.0')]"
     Nishtha_2 = "//div[@role='option']/span[contains(text(),'NISHTHA 2.0')]"
     Nishtha_3 = "//div[@role='option']/span[contains(text(),'NISHTHA 3.0')]"
