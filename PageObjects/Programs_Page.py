@@ -161,3 +161,31 @@ class Program_Objects:
     metric_options = "//*[@role='option']"
     choose_metrics = "//*[@class='ng-input']/input"
 
+    # PGI
+    pgi_button = "menu-item-7"
+    learning_info = "//app-school-education/div[1]/div/div[1]/sb-cqube-info-card/div/img"
+    learning_value = "//app-school-education/div[1]/div/div[1]/sb-cqube-info-card/div/div/span[1]"
+    learning_text = "//app-school-education/div[1]/div/div[1]/sb-cqube-info-card/div/div/span[2]"
+
+    access_info = "//app-school-education/div[1]/div/div[2]/sb-cqube-info-card/div/img"
+    access_value = "//app-school-education/div[1]/div/div[2]/sb-cqube-info-card/div/div/span[1]"
+    access_text = "//app-school-education/div[1]/div/div[2]/sb-cqube-info-card/div/div/span[2]"
+
+    infrastructure_info = "//app-school-education/div[1]/div/div[3]/sb-cqube-info-card/div/img"
+    infrastructure_value = "//app-school-education/div[1]/div/div[3]/sb-cqube-info-card/div/div/span[1]"
+    infrastructure_text = "//app-school-education/div[1]/div/div[3]/sb-cqube-info-card/div/div/span[2]"
+
+    equity_info = "//app-school-education/div[1]/div/div[4]/sb-cqube-info-card/div/img"
+    equity_value = "//app-school-education/div[1]/div/div[4]/sb-cqube-info-card/div/div/span[1]"
+    equity_text = "//app-school-education/div[1]/div/div[4]/sb-cqube-info-card/div/div/span[2]"
+
+    governance_info = "//app-school-education/div[1]/div/div[5]/sb-cqube-info-card/div/img"
+    governance_value = "//app-school-education/div[1]/div/div[5]/sb-cqube-info-card/div/div/span[1]"
+    governance_text = "//app-school-education/div[1]/div/div[5]/sb-cqube-info-card/div/div/span[2]"
+
+    implementation_tab_result = "//*[@role='tab'][1]"
+    statewise_perf_tab_result = "//*[@role='tab'][2]"
+    districtwise_tab_result = "//*[@role='tab'][3]"
+
+    state_wise_tab = "//*[contains(text(),'State Wise Performance')]"
+    district_wise_tab = "//*[contains(text(),'District Wise Performance')]"

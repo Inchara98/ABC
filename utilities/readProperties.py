@@ -109,6 +109,19 @@ class ReadConfig:
         driver.find_element(By.ID, pageobjects.pm_poshan).click()
         time.sleep(3)
         return driver
+    @staticmethod
+    def navigate_to_PGI_dashboard():
+        p = DirectoryPath()
+        pageobjects = Program_Objects()
+        data = ReadConfig()
+        driver = webdriver.Chrome(executable_path=p.get_driver_path())
+        driver.maximize_window()
+        driver.get(data.getApplicationURL())
+        driver.implicitly_wait(30)
+        time.sleep(3)
+        driver.find_element(By.ID, pageobjects.pgi_button).click()
+        time.sleep(3)
+        return driver
 
     @staticmethod
     def test_click_on_A_default_button(self, driver):
@@ -331,6 +344,29 @@ class ReadConfig:
 
     @staticmethod
     def get_map_tooltip_info_validation(self, driver):
+        blue_marks = 0
+        white_marks = 0
+        map_data = []
+        lst = self.driver.find_elements(By.CLASS_NAME, "leaflet-interactive")
+        print("No of Markers", len(lst) - 1)
+        markers = int(len(lst) - 1) / 2
+        if len(lst) - 1 == 0:
+            self.logger.info("*************** MAP Does not have Markers")
+            assert False
+        else:
+            for x in range(1, 3):
+                if lst[x].get_attribute('fill') == '#FFFFFF':
+                    white_marks = white_marks + 1
+                else:
+                    blue_marks = blue_marks + 1
+                act = ActionChains(self.driver)
+                act.move_to_element(lst[x]).perform()
+                act.pause(4)
+                txt = self.driver.find_element(By.XPATH, "//div[@class='leaflet-pane leaflet-tooltip-pane']")
+                map_data.append(txt.text)
+        return map_data
+
+    def get_map_markers_tooltip_info_validation(self, driver):
         driver.implicitly_wait(30)
         lst = self.driver.find_elements(By.CLASS_NAME, "leaflet-interactive")
         print("No of States", len(lst) - 1)
@@ -346,7 +382,7 @@ class ReadConfig:
             act = ActionChains(self.driver)
             act.move_to_element(lst[x]).perform()
             act.pause(4)
-            txt = self.driver.find_element(By.XPATH, "//div[@class='leaflet-pane leaflet-tooltip-pane']")
+            txt = self.driver.find_element(By.CLASS_NAME, "leaflet-popup-content")
             map_data.append(txt.text)
         return map_data
 
