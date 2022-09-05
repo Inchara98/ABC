@@ -361,6 +361,8 @@ class Test_PGI_Dashboard:
         time.sleep(2)
         options = self.driver.find_elements(By.XPATH, self.pageobjects.metric_options)
         for i in range(len(options)):
+            self.driver.find_element(By.ID, "metricFilter-Metrics to be shown").click()
+            time.sleep(2)
             opts = self.driver.find_element(By.XPATH, "//div[starts-with(@id,'a') and contains(@id,"'-' + str(i) + ")]")
             opt_name = self.driver.find_element(By.XPATH,
                                                 "//div[starts-with(@id,'a') and contains(@id,"'-' + str(i) + ")]/span")
@@ -370,7 +372,7 @@ class Test_PGI_Dashboard:
             self.driver.find_element(By.ID, "filter-State/UT").click()
             time.sleep(2)
             options = self.driver.find_elements(By.XPATH, self.pageobjects.metric_options)
-            for j in range(len(options) - 1):
+            for j in range(1,len(options) - 30):
                 opts = self.driver.find_element(By.XPATH,
                                                 "//div[starts-with(@id,'a') and contains(@id,"'-' + str(j) + ")]")
                 opt_name = self.driver.find_element(By.XPATH,
@@ -378,24 +380,23 @@ class Test_PGI_Dashboard:
                                                         j) + ")]/span")
                 state_name = opt_name.text
                 opts.click()
-                time.sleep(3)
+                time.sleep(4)
+                lst = self.driver.find_elements(By.CLASS_NAME, "leaflet-interactive")
                 if metric_option and state_name in self.driver.page_source:
+                    print(metric_option, state_name)
                     self.logger.info("**************** Metric Option and State Option selected *********************")
                     assert True
                 else:
                     print(metric_option, state_name)
                     self.logger.error("********************** Metrics Option and State Option is not selected "
                                       "********************")
-                    assert False
+                    count = count + 1
                 total_markers = 0
-                lst = self.driver.find_elements(By.CLASS_NAME, "leaflet-interactive")
                 for x in range(1, len(lst) - 1):
-
                     if lst[x].get_attribute('stroke-dasharray') != '0':
                         total_markers = total_markers + 1
-                        count = count + 1
-
-
-            if count != 0:
-                self.logger.error("************************ Drop Down options are not selected **********************")
-                assert False
+                self.driver.find_element(By.ID, "filter-State/UT").click()
+                time.sleep(2)
+        if count != 0:
+            self.logger.error("************************ Drop Down options are not selected **********************")
+            assert False
