@@ -14,7 +14,7 @@ def setup_logger(logger_name, log_file, level=logging.WARNING):
     # Configure log file
     l = logging.getLogger(logger_name)
     formatter = logging.Formatter('%(asctime)s :%(levelname)s : %(name)s :%(message)s')
-    fileHandler = logging.FileHandler(log_file, mode='w')
+    fileHandler = logging.FileHandler(log_file, mode='a')
     fileHandler.setFormatter(formatter)
     streamHandler = logging.StreamHandler()
     streamHandler.setFormatter(formatter)

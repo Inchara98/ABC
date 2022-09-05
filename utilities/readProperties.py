@@ -365,11 +365,11 @@ class ReadConfig:
                 txt = self.driver.find_element(By.XPATH, "//div[@class='leaflet-pane leaflet-tooltip-pane']")
                 map_data.append(txt.text)
         return map_data
-
+    @staticmethod
     def get_map_markers_tooltip_info_validation(self, driver):
         driver.implicitly_wait(30)
         lst = self.driver.find_elements(By.CLASS_NAME, "leaflet-interactive")
-        print("No of States", len(lst) - 1)
+        print("No of Markers", len(lst) - 1)
         blue_marks = 0
         white_marks = 0
         time.sleep(2)
@@ -382,9 +382,10 @@ class ReadConfig:
             act = ActionChains(self.driver)
             act.move_to_element(lst[x]).perform()
             act.pause(4)
-            txt = self.driver.find_element(By.CLASS_NAME, "leaflet-popup-content")
-            map_data.append(txt.text)
-        return map_data
+            # txt = self.driver.find_elements(By.CLASS_NAME, "//*[@class='leaflet-popup-content']/b") for i in range(
+            # len(txt)): details = self.driver.find_elements(By.CLASS_NAME, "//*[@class='leaflet-popup-content']/b[
+            # "+str(i)+"]") map_data.append(details)
+        return len(lst)
 
     @staticmethod
     def test_validate_course_column_validate(self):

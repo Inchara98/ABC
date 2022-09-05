@@ -187,5 +187,7 @@ class Program_Objects:
     statewise_perf_tab_result = "//*[@role='tab'][2]"
     districtwise_tab_result = "//*[@role='tab'][3]"
 
-    state_wise_tab = "//*[contains(text(),'State Wise Performance')]"
-    district_wise_tab = "//*[contains(text(),'District Wise Performance')]"
+    pgi_state_wise_tab = "//*[contains(text(),'State Wise Performance')]"
+    pgi_district_wise_tab = "//*[contains(text(),'District Wise Performance')]"
+
+    metrics_click = "ng-input"
